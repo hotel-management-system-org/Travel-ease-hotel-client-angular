@@ -1,0 +1,50 @@
+<div class="auth-page" style="border: 1px solid red; margin-bottom: 0">
+
+  <div class="auth-page__top-brand" style="display: flex; justify-content: center">
+    <div class="brand-logo">
+      <div class="brand-logo__icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="1" y="3" width="15" height="13" rx="2"/>
+          <path d="m16 8 5 2v5h-5V8z"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/>
+          <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+      </div>
+      <span class="brand-logo__name">Travel Ease Hotel System</span>
+    </div>
+  </div>
+
+  <div class="verify-card">
+    <h1 class="verify-card__title">Please verify your email</h1>
+    <p class="verify-card__desc">
+      We've sent a 5-digit verification code<br/>
+    </p>
+    <div class="otp-field" role="group" aria-label="Verification code">
+      <input class="otp-field__box" type="text" maxlength="1" inputmode="numeric" placeholder="0" aria-label="Digit 1" />
+      <input class="otp-field__box" type="text" maxlength="1" inputmode="numeric" placeholder="0" aria-label="Digit 2" />
+      <input class="otp-field__box" type="text" maxlength="1" inputmode="numeric" placeholder="0" aria-label="Digit 3" />
+      <input class="otp-field__box" type="text" maxlength="1" inputmode="numeric" placeholder="0" aria-label="Digit 4" />
+      <input class="otp-field__box" type="text" maxlength="1" inputmode="numeric" placeholder="0" aria-label="Digit 5" />
+    </div>
+    <button class="btn btn--primary btn--full" type="button">
+      Verify Account
+    </button>
+    <div class="verify-card__timer">
+      <div class="timer-block">
+        <span class="timer-block__value">01</span>
+        <span class="timer-block__label">Minutes</span>
+      </div>
+      <span class="timer-block__separator">:</span>
+      <div class="timer-block">
+        <span class="timer-block__value">59</span>
+        <span class="timer-block__label">Seconds</span>
+      </div>
+    </div>
+    <p class="verify-card__resend">
+      Didn't receive the code?
+      <a href="#" class="verify-card__resend-link">Resend Code</a>
+    </p>
+    <button style="border: none;cursor: pointer" routerLink="/security/login">← Back to Login</button>
+  </div>
+  <p class="auth-page__footer">© 2024 Travel Ease Hotel System. All rights reserved.</p>
+</div>
