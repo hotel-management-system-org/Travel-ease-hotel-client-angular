@@ -1,0 +1,164 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+:host { display: block; }
+
+.gallery-section {
+
+  background: none;
+  overflow: hidden;
+  border: 1px solid $gray-100;
+  box-shadow: $shadow-card;
+
+  // ---- TOP BAR ----
+  &__topbar {
+    background: #fbf7f7;
+    margin-top: 5px;
+    @include flex-between;
+    padding: $sp-3 $sp-5;
+    border-bottom: 1px solid $gray-100;
+    gap: $sp-3;
+  }
+
+  &__topbar-left {
+    @include flex-center;
+    gap: $sp-2;
+    min-width: 0;
+  }
+
+  &__hotel-icon {
+    width: 28px;
+    height: 28px;
+    background: $primary-ghost;
+    border-radius: $radius-md;
+    @include flex-center;
+    justify-content: center;
+    color: $primary;
+    flex-shrink: 0;
+  }
+
+  &__hotel-name {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $gray-800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__topbar-right {
+    @include flex-center;
+    gap: $sp-2;
+    flex-shrink: 0;
+  }
+
+  // ---- ICON BUTTONS (share / fav) ----
+  &__icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: $radius-full;
+    border: 1px solid $gray-200;
+    background: $white;
+    @include flex-center;
+    justify-content: center;
+    cursor: pointer;
+    color: $gray-500;
+    transition: all $transition;
+
+    &:hover {
+      border-color: $primary;
+      color: $primary;
+      background: $primary-ghost;
+    }
+  }
+
+  // ---- BOOK NOW BUTTON ----
+  &__book-btn {
+    @include btn-primary;
+    padding: $sp-2 $sp-5;
+    font-size: $fs-sm;
+    border-radius: $radius-md;
+  }
+}
+
+// ============================================================
+// IMAGE GRID
+// ============================================================
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 340px;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  // ---- LARGE LEFT IMAGE ----
+  &__main {
+    overflow: hidden;
+    position: relative;
+
+    @media (max-width: $bp-md) {
+      height: 220px;
+    }
+  }
+
+  // ---- RIGHT 2x2 GRID ----
+  &__side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    padding-left: 3px;
+
+    @media (max-width: $bp-md) {
+      height: 200px;
+      padding-left: 0;
+      padding-top: 3px;
+    }
+  }
+
+  &__thumb {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    // Overlay for "+12 photos" thumb
+    &--more {
+      .gallery-grid__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba($gray-900, 0.52);
+        @include flex-center;
+        justify-content: center;
+        transition: background $transition;
+
+        span {
+          font-size: $fs-sm;
+          font-weight: $fw-bold;
+          color: $white;
+          letter-spacing: 0.02em;
+        }
+      }
+
+      &:hover .gallery-grid__overlay {
+        background: rgba($gray-900, 0.4);
+      }
+    }
+  }
+
+  // ---- ALL IMAGES ----
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+
+    .gallery-grid__main:hover &,
+    .gallery-grid__thumb:hover & {
+      transform: scale(1.05);
+    }
+  }
+}
