@@ -1,0 +1,137 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+// BASE BUTTON
+.btn {
+  @include button-base;
+  position: relative;
+  overflow: hidden;
+
+  // --- RIPPLE EFFECT (Click animation) ---
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity $transition-fast;
+  }
+  &:active::after {
+    opacity: 1;
+  }
+
+  // --- PRIMARY BUTTON (නිල් රටාව) ---
+  &--primary {
+    background: $color-primary;
+    color: $color-white;
+    box-shadow: 0 2px 8px rgba($color-primary, 0.3);
+
+    &:hover:not(:disabled) {
+      background: $color-primary-dark;
+      box-shadow: 0 4px 14px rgba($color-primary, 0.4);
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba($color-primary, 0.25);
+    }
+  }
+
+  // --- SECONDARY BUTTON (සුදු) ---
+  &--secondary {
+    background: $color-white;
+    color: $color-gray-700;
+    border: 1.5px solid $color-gray-200;
+    box-shadow: $shadow-sm;
+
+    &:hover:not(:disabled) {
+      background: $color-gray-50;
+      border-color: $color-gray-300;
+    }
+  }
+
+  // --- SOCIAL BUTTON (Google / Facebook) ---
+  &--social {
+    background: $color-white;
+    color: $color-gray-700;
+    border: 1.5px solid $color-gray-200;
+    flex: 1;
+    box-shadow: $shadow-sm;
+    font-weight: $font-weight-medium;
+    padding: $spacing-3 $spacing-4;
+
+    &:hover:not(:disabled) {
+      background: $color-gray-50;
+      border-color: $color-gray-300;
+      box-shadow: $shadow-md;
+    }
+
+    // Facebook variant
+    &--facebook {
+      background: #1877F2;
+      color: $color-white;
+      border-color: #1877F2;
+
+      &:hover:not(:disabled) {
+        background: darken(#1877F2, 8%);
+        border-color: darken(#1877F2, 8%);
+      }
+    }
+  }
+
+  // --- GHOST BUTTON (transparent) ---
+  &--ghost {
+    background: transparent;
+    color: $color-gray-500;
+    border: none;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-sm;
+    padding: $spacing-2 $spacing-3;
+
+    &:hover:not(:disabled) {
+      color: $color-primary;
+    }
+  }
+
+  // --- FULL WIDTH ---
+  &--full {
+    width: 100%;
+    padding: $spacing-4 $spacing-6;
+    font-size: $font-size-base;
+  }
+
+  // --- LOADING STATE (Spinner) ---
+  &--loading {
+    cursor: wait;
+    opacity: 0.85;
+  }
+
+  // --- ICON INSIDE BUTTON ---
+  &__icon {
+    font-size: $font-size-lg;
+    margin-left: $spacing-1;
+  }
+
+  &__social-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+  }
+
+  // --- SPINNER (Loading animation) ---
+  &__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: $color-white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+}
+
+// --- SPINNER ANIMATION ---
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
