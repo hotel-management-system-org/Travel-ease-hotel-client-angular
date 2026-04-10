@@ -1,0 +1,70 @@
+<div class="form-field">
+  <label class="form-field__label" for="firstName">First Name</label>
+  <input
+    class="form-field__input"
+    type="text"
+    id="firstName"
+    placeholder="John"
+  />
+</div>
+
+<div class="form-field">
+  <label class="form-field__label" for="email">Email Address</label>
+  <div class="form-field__icon-wrapper">
+    <span class="form-field__icon">✉</span>
+    <input
+      class="form-field__input form-field__input--with-icon"
+      type="email"
+      id="email"
+      placeholder="name@company.com"
+    />
+  </div>
+</div>
+
+<div class="form-field">
+  <label class="form-field__label" for="password">Password</label>
+  <div class="form-field__icon-wrapper">
+    <span class="form-field__icon form-field__icon--left">🔒</span>
+    <input
+      class="form-field__input form-field__input--with-icon form-field__input--with-icon-right"
+      type="password"
+      id="password"
+      placeholder="••••••••"
+    />
+    <button class="form-field__toggle-btn" type="button" aria-label="Toggle password visibility">
+      <span class="form-field__eye-icon">👁</span>
+    </button>
+  </div>
+</div>
+
+<div class="form-field form-field--error">
+  <label class="form-field__label" for="emailError">Email Address</label>
+  <div class="form-field__icon-wrapper">
+    <span class="form-field__icon">✉</span>
+    <input
+      class="form-field__input form-field__input--with-icon is-error"
+      type="email"
+      id="emailError"
+      placeholder="name@company.com"
+      value="wrong@"
+    />
+  </div>
+  <span class="form-field__error-msg">Please enter a valid email address.</span>
+</div>
+
+<div class="form-field">
+  <label class="form-field__label" for="phone">Contact Number</label>
+  <input
+    class="form-field__input"
+    type="tel"
+    id="phone"
+    placeholder="+1 (555) 000-0000"
+  />
+</div>
+
+<div class="password-strength">
+  <div class="password-strength__bar">
+    <div class="password-strength__fill password-strength__fill--medium"></div>
+  </div>
+  <span class="password-strength__label password-strength__label--medium">Medium</span>
+</div>
