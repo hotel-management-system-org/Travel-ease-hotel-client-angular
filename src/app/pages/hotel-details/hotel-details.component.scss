@@ -1,0 +1,26 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+:host { display: block; }
+
+.hotel-details-page {
+  min-height: 100vh;
+
+
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 $sp-6;
+    @include flex-column;
+    gap: $sp-5;
+
+    @media (max-width: 760px) {
+      margin: 5px;
+      padding: 0;
+
+      .list-navigation{
+        display: none;
+      }
+    }
+  }
+}
