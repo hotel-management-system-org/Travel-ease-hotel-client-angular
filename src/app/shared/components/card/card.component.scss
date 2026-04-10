@@ -1,0 +1,58 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.card {
+  @include card-base;
+  width: 100%;
+
+  &__body {
+    padding: $spacing-8;
+
+    @include sm {
+      padding: $spacing-10;
+    }
+  }
+
+  // --- AUTH CARD (Full page form card) ---
+  &--auth {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  // --- CENTERED CARD (Login with brand at top) ---
+  &--centered {
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  // --- BRAND SECTION ---
+  &__brand {
+    @include flex-column;
+    align-items: center;
+    padding: $spacing-8 $spacing-8 0;
+    gap: $spacing-2;
+  }
+
+  &__brand-icon {
+    width: 52px;
+    height: 52px;
+    background: $color-primary;
+    border-radius: $radius-xl;
+    @include flex-center;
+    font-size: $font-size-xl;
+    color: $color-white;
+    box-shadow: 0 4px 14px rgba($color-primary, 0.35);
+  }
+
+  &__brand-name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-gray-900;
+  }
+
+  &__brand-subtitle {
+    font-size: $font-size-xs;
+    color: $color-gray-500;
+  }
+}
