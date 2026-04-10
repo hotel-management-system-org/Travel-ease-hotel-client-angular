@@ -1,0 +1,367 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+
+.auth-page {
+  min-height: 630px;
+  max-height: 10px;
+  margin: 0 20px;
+  box-sizing: border-box;
+  background: var(--light-color);
+  @include flex-center;
+
+}
+
+// ---- REGISTER CARD ----
+.register-card {
+
+
+  // --- NAVBAR ---
+  &__navbar {
+    @include flex-between;
+    padding: $spacing-4 $spacing-6;
+    border-bottom: 1px solid $color-gray-100;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &__logo-icon {
+    width: 30px;
+    height: 30px;
+    background: $color-primary;
+    border-radius: $radius-md;
+    @include flex-center;
+    color: $color-white;
+  }
+
+  &__logo-name {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    color: $color-gray-900;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+  }
+
+  &__nav-link {
+    font-size: $font-size-sm;
+    color: $color-gray-500;
+    &:hover { color: $color-primary; }
+  }
+
+  // --- BODY ---
+  &__body {
+    padding: $spacing-6 $spacing-8;
+    @include flex-column;
+    gap: $spacing-5;
+  }
+
+  // --- HEADER ---
+  &__header { @include flex-column; gap: $spacing-1; text-align: center; }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-gray-900;
+  }
+
+  &__desc {
+    font-size: 14px;
+    color: $color-gray-500;
+    max-width: 340px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  // --- STATUS BAR ---
+  &__statusbar {
+    @include flex-between;
+    padding: $spacing-3 $spacing-6;
+    border-top: 1px solid $color-gray-100;
+    background: $color-gray-50;
+  }
+
+  &__status-indicator {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    font-size: $font-size-xs;
+    color: $color-gray-500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__status-dot {
+    width: 8px;
+    height: 8px;
+    background: $color-success;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba($color-success, 0.25);
+  }
+
+  &__status-links {
+    display: flex;
+    gap: $spacing-4;
+
+    a {
+      font-size: $font-size-xs;
+      color: $color-gray-400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      &:hover { color: $color-primary; }
+    }
+  }
+}
+
+// ---- FORM LAYOUT ----
+.form-row {
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+ /* border: 1px solid red;*/
+
+  @include sm {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.auth-form {
+  @include flex-column;
+  gap: $spacing-4;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+// ---- FORM FIELDS ----
+.form-field {
+  @include flex-column;
+  gap: $spacing-2;
+  display: flex;
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    @include input-base;
+
+    &--with-toggle { padding-right: 2.75rem; }
+  }
+
+  &__toggle-btn {
+    position: absolute;
+    right: $spacing-3;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $color-gray-400;
+    @include flex-center;
+    padding: $spacing-1;
+    transition: color $transition-fast;
+    &:hover { color: $color-gray-700; }
+  }
+}
+.pass-field{
+  width: 190px;
+}
+// ---- PASSWORD STRENGTH ----
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+
+  &__bar {
+    flex: 1;
+    height: 4px;
+    background: $color-gray-200;
+    border-radius: $radius-full;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    transition: width $transition-base;
+
+    &--weak   { width: 33%; background: $color-error; }
+    &--medium { width: 66%; background: $color-warning; }
+    &--strong { width: 100%; background: $color-success; }
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    &--weak   { color: $color-error; }
+    &--medium { color: $color-warning; }
+    &--strong { color: $color-success; }
+  }
+}
+
+// ---- CHECKBOX ----
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-2;
+  cursor: pointer;
+
+  &__input { @include visually-hidden; }
+
+  &__custom {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border: 2px solid $color-gray-300;
+    border-radius: $radius-sm;
+    background: $color-white;
+    margin-top: 2px;
+    transition: all $transition-fast;
+
+    .checkbox-label__input:checked + & {
+      background: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+
+  &__text {
+    font-size: $font-size-sm;
+    color: $color-gray-600;
+    line-height: 1.5;
+  }
+}
+
+// ---- SOCIAL ROW ----
+.social-row {
+  display: flex;
+  gap: $spacing-3;
+}
+
+// ---- DIVIDER ----
+.divider {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+
+  &__line {
+    flex: 1;
+    height: 1px;
+    background: $color-gray-200;
+  }
+
+  &__text {
+    font-size: $font-size-xs;
+    color: $color-gray-400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+}
+
+// ---- AUTH FOOTER ----
+.auth-card {
+  &__footer-text {
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $color-gray-500;
+  }
+
+  &__link {
+    color: $color-primary;
+    font-weight: $font-weight-semibold;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// ---- BUTTONS ----
+.btn {
+
+  height: 50px;
+  &--primary {
+    background: var(--background-color);
+    color: var(--light-color);
+
+
+    &:hover:not(:disabled) {
+      background: $color-primary-dark;
+
+
+    }
+
+  }
+
+
+
+}
+
+.reg-btn{
+  border: none;
+  color: var(--light-color);
+  border-radius: 5px;
+  background:#1D4ED8;
+}
+
+.btn-social{
+  border: none;
+  display: flex;
+  border-radius:100%;
+  align-items: center;
+  justify-content: space-around;
+  width: 50px;
+}
+
+.btn-social:hover{
+  border: 1px solid #7b9ecf;
+  cursor: pointer;
+}
+
+
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+
+  .register-card{
+    margin-top: 300px;
+  }
+.form-row{
+  display: flex;
+  flex-direction: column;
+
+}
+ .pass-field{
+   width: 100%;
+ }
+
+  @media (max-width: 353px) {
+
+
+    .register-card {
+      margin-top: 350px;
+    }
+
+
+
+  }
+}
