@@ -1,0 +1,392 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+:host { display: block; }
+
+// ============================================================
+// TWO-COLUMN LAYOUT
+// ============================================================
+.hotel-info {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: $sp-6;
+  padding: $sp-6 0;
+  align-items: start;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+  }
+
+  // ---- SECTION TITLE ----
+  &__section {
+    margin-bottom: $sp-6;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__section-title {
+    font-size: 30px;
+    font-weight: 590;
+    color: $gray-900;
+    padding-bottom: $sp-2;
+    border-bottom: 1px solid $gray-100;
+  }
+
+  // ---- TITLE ROW ----
+  &__title-row {
+    @include flex-between;
+    align-items: flex-start;
+    gap: $sp-4;
+    margin-bottom: $sp-5;
+    flex-wrap: wrap;
+  }
+
+  &__name {
+    font-size: $fs-2xl;
+    font-weight: $fw-extrabold;
+    color: $gray-900;
+    margin: 0 0 $sp-1;
+    letter-spacing: -0.3px;
+  }
+
+  &__address {
+    @include flex-center;
+    gap: $sp-1;
+    font-size: $fs-xs;
+    color: $gray-500;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+
+  &__map-link {
+    color: $primary;
+    font-weight: $fw-semibold;
+    font-size: $fs-xs;
+    &:hover { text-decoration: underline; }
+  }
+
+  // ---- PRICE BLOCK ----
+  &__price-block {
+    @include flex-column;
+    align-items: flex-end;
+    gap: $sp-2;
+    flex-shrink: 0;
+  }
+
+  &__price {
+    @include flex-center;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  &__amount {
+    font-size: $fs-2xl;
+    font-weight: $fw-extrabold;
+    color: $primary;
+  }
+
+  &__per {
+    font-size: $fs-xs;
+    color: $gray-400;
+  }
+
+  &__book-btn {
+    @include btn-primary;
+    padding: $sp-2 $sp-6;
+    font-size: $fs-sm;
+    border-radius: $radius-md;
+    box-shadow: 0 2px 8px rgba($primary, 0.28);
+  }
+
+  // ---- DESCRIPTION ----
+  &__desc {
+    font-size: $fs-sm;
+    color: $gray-600;
+    line-height: 1.75;
+    margin: 0;
+  }
+}
+
+// ============================================================
+// FACILITIES GRID
+// ============================================================
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $sp-3;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.facility-item {
+  @include flex-center;
+  gap: $sp-2;
+  padding: $sp-3;
+  background: $gray-50;
+  border-radius: $radius-lg;
+  border: 1px solid $gray-100;
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  color: $gray-700;
+  transition: all $transition;
+
+  &:hover {
+    background: $primary-ghost;
+    border-color: $primary-border;
+    color: $primary;
+  }
+
+  &__icon {
+    width: 28px;
+    height: 28px;
+    background: $white;
+    border-radius: $radius-md;
+    @include flex-center;
+    justify-content: center;
+    color: $primary;
+    flex-shrink: 0;
+    border: 1px solid $gray-100;
+  }
+}
+
+// ============================================================
+// ROOM TABLE
+// ============================================================
+.room-table {
+  border: 1px solid $gray-100;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  // ---- HEADER ROW ----
+  &__head {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 80px;
+    gap: $sp-3;
+    padding: $sp-3 $sp-4;
+    background: $gray-50;
+    font-size: $fs-xs;
+    font-weight: $fw-bold;
+    color: $gray-500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $gray-100;
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr 1fr;
+      gap: $sp-2;
+    }
+  }
+
+  // ---- DATA ROW ----
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 80px;
+    gap: $sp-3;
+    align-items: center;
+    padding: $sp-4;
+    border-bottom: 1px solid $gray-100;
+    transition: background $transition;
+
+    &:last-child { border-bottom: none; }
+
+    &:hover { background: $gray-50; }
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr 1fr;
+      gap: $sp-2;
+    }
+  }
+
+  &__type {
+    @include flex-column;
+    gap: 2px;
+  }
+
+  &__room-name {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $gray-800;
+  }
+
+  &__room-sub {
+    font-size: $fs-xs;
+    color: $gray-400;
+  }
+
+  &__capacity {
+    @include flex-center;
+    gap: $sp-1;
+    color: $gray-400;
+  }
+
+  &__price {
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $primary;
+  }
+
+  // ---- SELECT BUTTON ----
+  &__select-btn {
+    padding: $sp-2 $sp-3;
+    background: $primary-ghost;
+    color: $primary;
+    border: 1px solid $primary-border;
+    border-radius: $radius-md;
+    font-size: $fs-xs;
+    font-weight: $fw-bold;
+    font-family: $font;
+    cursor: pointer;
+    transition: all $transition;
+    white-space: nowrap;
+
+    &:hover {
+      background: $primary;
+      color: $white;
+      border-color: $primary;
+    }
+  }
+}
+
+// ============================================================
+// AVAILABILITY CARD (Right Column)
+// ============================================================
+.availability-card {
+  @include card-base;
+  padding: $sp-5;
+  position: sticky;
+  top: 80px;
+  border: 1px solid $gray-200;
+
+  &__title {
+    font-size: $fs-base;
+    font-weight: $fw-bold;
+    color: $gray-900;
+    margin: 0 0 $sp-4;
+  }
+
+  &__nights {
+    text-align: center;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    color: $primary;
+    background: $primary-ghost;
+    border-radius: $radius-md;
+    padding: $sp-2;
+    margin: $sp-3 0;
+  }
+
+  &__select-btn {
+    @include btn-primary;
+    width: 100%;
+    padding: $sp-3;
+    font-size: $fs-sm;
+    border-radius: $radius-md;
+    margin-top: $sp-2;
+  }
+}
+
+// ============================================================
+// CALENDAR
+// ============================================================
+.calendar {
+  &__header {
+    @include flex-between;
+    margin-bottom: $sp-3;
+  }
+
+  &__month {
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $gray-800;
+  }
+
+  &__nav-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-full;
+    border: 1px solid $gray-200;
+    background: $white;
+    @include flex-center;
+    justify-content: center;
+    cursor: pointer;
+    color: $gray-500;
+    transition: all $transition;
+
+    &:hover {
+      background: $primary;
+      color: $white;
+      border-color: $primary;
+    }
+  }
+
+  &__days-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: $sp-1;
+
+    span {
+      text-align: center;
+      font-size: $fs-xs;
+      font-weight: $fw-bold;
+      color: $gray-400;
+      padding: $sp-1 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  &__day {
+    aspect-ratio: 1;
+    @include flex-center;
+    justify-content: center;
+    font-size: $fs-xs;
+    font-weight: $fw-medium;
+    color: $gray-700;
+    border-radius: $radius-full;
+    cursor: pointer;
+    transition: all $transition;
+
+    &:hover:not(&--disabled):not(&--empty) {
+      background: $primary-ghost;
+      color: $primary;
+    }
+
+    &--empty { cursor: default; }
+
+    &--disabled {
+      color: $gray-300;
+      cursor: not-allowed;
+      background: $gray-50;
+    }
+
+    // Selected range start
+    &--range-start {
+      background: $primary;
+      color: $white;
+      font-weight: $fw-bold;
+      border-radius: $radius-full;
+    }
+
+    // Middle of selected range
+    &--range {
+      background: $primary-light;
+      color: $primary;
+      font-weight: $fw-semibold;
+      border-radius: 0;
+    }
+
+    // Selected range end
+    &--range-end {
+      background: $primary;
+      color: $white;
+      font-weight: $fw-bold;
+      border-radius: $radius-full;
+    }
+  }
+}
