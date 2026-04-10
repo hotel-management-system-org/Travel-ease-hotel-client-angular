@@ -1,0 +1,178 @@
+// ============================================
+// _variables.scss
+// Travel Ease - Design System Variables
+// ============================================
+
+
+$color-primary:        #2563EB;   // Main blue button color
+$color-primary-dark:   #1D4ED8;   // Hover state blue
+$color-primary-light:  #DBEAFE;   // Light blue background
+$color-primary-ghost:  #EFF6FF;   // Very light blue
+
+// --- SECONDARY COLORS ---
+$color-success:        #16A34A;   // Green - success messages
+$color-success-light:  #DCFCE7;   // Light green background
+$color-error:          #DC2626;   // Red - error messages
+$color-error-light:    #FEE2E2;   // Light red background
+$color-warning:        #D97706;   // Orange - warning
+$color-warning-light:  #FEF3C7;   // Light orange
+
+// --- NEUTRAL COLORS (Grays) ---
+$color-white:          #FFFFFF;
+$color-gray-50:        #F9FAFB;
+$color-gray-100:       #F3F4F6;
+$color-gray-200:       #E5E7EB;
+$color-gray-300:       #D1D5DB;
+$color-gray-400:       #9CA3AF;
+$color-gray-500:       #6B7280;
+$color-gray-600:       #4B5563;
+$color-gray-700:       #374151;
+$color-gray-800:       #1F2937;
+$color-gray-900:       #111827;
+
+// --- BACKGROUND ---
+$bg-page:              #F1F5F9;   // Page background (light gray-blue)
+$bg-card:              #FFFFFF;   // Card background
+$bg-input:             #FFFFFF;   // Input background
+
+
+$font-family:          'Inter', 'Segoe UI', sans-serif;
+$font-size-xs:         0.75rem;   // 12px
+$font-size-sm:         0.875rem;  // 14px
+$font-size-base:       1rem;      // 16px
+$font-size-lg:         1.125rem;  // 18px
+$font-size-xl:         1.25rem;   // 20px
+$font-size-2xl:        1.5rem;    // 24px
+$font-size-3xl:        1.875rem;  // 30px
+
+$font-weight-normal:   400;
+$font-weight-medium:   500;
+$font-weight-semibold: 600;
+$font-weight-bold:     700;
+
+
+$spacing-1:   0.25rem;   // 4px
+$spacing-2:   0.5rem;    // 8px
+$spacing-3:   0.75rem;   // 12px
+$spacing-4:   1rem;      // 16px
+$spacing-5:   1.25rem;   // 20px
+$spacing-6:   1.5rem;    // 24px
+$spacing-8:   2rem;      // 32px
+$spacing-10:  2.5rem;    // 40px
+$spacing-12:  3rem;      // 48px
+
+
+$radius-sm:   0.375rem;  // 6px
+$radius-md:   0.5rem;    // 8px
+$radius-lg:   0.75rem;   // 12px
+$radius-xl:   1rem;      // 16px
+$radius-full: 9999px;    // Pill shape
+
+
+$shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md:   0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg:   0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl:   0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-card: 0 2px 20px rgba(37, 99, 235, 0.08);
+
+// --- TRANSITIONS (Animation) ---
+$transition-fast:    0.15s ease;
+$transition-base:    0.25s ease;
+$transition-slow:    0.35s ease;
+
+// --- BREAKPOINTS (Screen sizes) ---
+$bp-sm:   576px;
+$bp-md:   768px;
+$bp-lg:   992px;
+$bp-xl:   1200px;
+
+// --- BORDER ---
+$border-color:       $color-gray-200;
+$border-color-focus: $color-primary;
+$border-radius-input: $radius-md;
+
+// ================================================
+// _variables.scss
+// StayFinder - Global Design Tokens
+// ================================================
+
+// --- COLORS ---
+$primary:           #2563eb;
+$primary-dark:      #1d4ed8;
+$primary-light:     #dbeafe;
+$primary-ghost:     rgba(37, 99, 235, 0.08);
+$primary-border:    rgba(37, 99, 235, 0.12);
+
+$white:             #ffffff;
+$gray-50:           #f9fafb;
+$gray-100:          #f3f4f6;
+$gray-200:          #e5e7eb;
+$gray-300:          #d1d5db;
+$gray-400:          #9ca3af;
+$gray-500:          #6b7280;
+$gray-600:          #4b5563;
+$gray-700:          #374151;
+$gray-800:          #1f2937;
+$gray-900:          #111827;
+
+$success:           #16a34a;
+$warning:           #f59e0b;
+$danger:            #ef4444;
+
+$bg-page:           linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 40%, #e6f0fb 100%);
+
+// --- TYPOGRAPHY ---
+$font:              'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+
+$fs-xs:             0.75rem;    // 12px
+$fs-sm:             0.875rem;   // 14px
+$fs-base:           1rem;       // 16px
+$fs-lg:             1.125rem;   // 18px
+$fs-xl:             1.25rem;    // 20px
+$fs-2xl:            1.5rem;     // 24px
+$fs-3xl:            1.875rem;   // 30px
+$fs-4xl:            2.25rem;    // 36px
+$fs-5xl:            3rem;       // 48px
+
+$fw-normal:         400;
+$fw-medium:         500;
+$fw-semibold:       600;
+$fw-bold:           700;
+$fw-extrabold:      800;
+
+// --- SPACING ---
+$sp-1:   0.25rem;
+$sp-2:   0.5rem;
+$sp-3:   0.75rem;
+$sp-4:   1rem;
+$sp-5:   1.25rem;
+$sp-6:   1.5rem;
+$sp-8:   2rem;
+$sp-10:  2.5rem;
+$sp-12:  3rem;
+$sp-16:  4rem;
+
+// --- BORDERS ---
+$radius-sm:    6px;
+$radius-md:    8px;
+$radius-lg:    12px;
+$radius-xl:    16px;
+$radius-2xl:   20px;
+$radius-full:  9999px;
+
+// --- SHADOWS ---
+$shadow-sm:    0 1px 3px rgba(0,0,0,0.08);
+$shadow-md:    0 4px 12px rgba(0,0,0,0.08);
+$shadow-lg:    0 8px 24px rgba(0,0,0,0.10);
+$shadow-card:  0 2px 16px rgba(37,99,235,0.08);
+$shadow-search: 0 4px 32px rgba(37,99,235,0.13), 0 1px 4px rgba(0,0,0,0.06);
+
+// --- TRANSITIONS ---
+$transition:   0.18s ease;
+$transition-md: 0.25s ease;
+
+// --- BREAKPOINTS ---
+$bp-sm:   576px;
+$bp-md:   768px;
+$bp-lg:   1024px;
+$bp-xl:   1280px;
