@@ -1,0 +1,95 @@
+
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+$step-blue:     #003580;
+$step-done-bg:  #003580;
+$step-active-bg:#003580;
+
+:host { display: block; }
+
+.booking-steps {
+  @include flex-center;
+  padding: $sp-5 $sp-8;
+  background: $white;
+  border-bottom: 1px solid $gray-100;
+
+
+
+  // ---- SINGLE STEP ----
+  &__step {
+    @include flex-center;
+    gap: $sp-2;
+    flex-shrink: 0;
+  }
+
+  // ---- CIRCLE ----
+  &__circle {
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-full;
+    border: 2px solid $gray-300;
+    @include flex-center;
+    justify-content: center;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $gray-400;
+    flex-shrink: 0;
+    transition: all $transition;
+
+    &--done {
+      background: $step-done-bg;
+      border-color: $step-done-bg;
+      color: $white;
+    }
+
+    &--active {
+      background: $step-active-bg;
+      border-color: $step-active-bg;
+      color: $white;
+    }
+  }
+
+  // ---- LABEL ----
+  &__label {
+    font-size: $fs-sm;
+    color: $gray-400;
+    font-weight: $fw-medium;
+    white-space: nowrap;
+
+    &--active {
+      color: $gray-900;
+      font-weight: $fw-bold;
+    }
+  }
+
+  // ---- CONNECTOR LINE ----
+  &__line {
+    flex: 1;
+    height: 1px;
+    background: $gray-200;
+    margin: 0 $sp-3;
+
+
+    &--done {
+      background: $step-done-bg;
+    }
+  }
+  @media (max-width: 470px) {
+    .booking-steps {
+      padding: 770px!important;
+    }
+    .booking-steps__line{
+       min-width: 10px;
+    }
+
+    .booking-steps__label{
+      font-size: 11px;
+    }
+    .booking-steps__circle{
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
