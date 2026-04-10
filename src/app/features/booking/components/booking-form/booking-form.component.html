@@ -1,0 +1,168 @@
+<div class="booking-form-wrap">
+
+  <div class="signed-in-banner">
+    <div class="signed-in-banner__avatar">
+      <img
+        src="https://i.pravatar.cc/40?img=8"
+        alt="User"
+        class="signed-in-banner__avatar-img"
+      />
+    </div>
+    <div class="signed-in-banner__text">
+      <p class="signed-in-banner__title">You are signed in</p>
+      <p class="signed-in-banner__email">thaminduweeravardana&#64;gmail.com</p>
+    </div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="createBooking()">
+
+    <div class="booking-form">
+
+      <h2 class="booking-form__title">Enter your details</h2>
+
+      <div class="booking-form__alert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="#0071c2" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <span>Almost done! Just fill in the <strong>* required info</strong></span>
+      </div>
+
+      <div class="booking-form__row">
+        <div class="booking-form__field">
+          <label class="booking-form__label" for="first-name">
+            First name <span class="booking-form__required">*</span>
+          </label>
+          <input
+            class="booking-form__input"
+            type="text"
+            id="first-name"
+            formControlName="firstName"
+          />
+        </div>
+        <div class="booking-form__field">
+          <label class="booking-form__label" for="last-name">
+            Last name <span class="booking-form__required">*</span>
+          </label>
+          <input
+            class="booking-form__input"
+            type="text"
+            id="last-name"
+            formControlName="lastName"
+          />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="booking-form__field">
+        <label class="booking-form__label" for="email">
+          Email address <span class="booking-form__required">*</span>
+        </label>
+        <input
+          class="booking-form__input booking-form__input--filled"
+          type="email"
+          id="email"
+          formControlName="email"
+        />
+        <span class="booking-form__hint">Confirmation email goes to this address</span>
+      </div>
+
+      <!-- Address -->
+      <div class="booking-form__field">
+        <label class="booking-form__label" for="address">
+          Address <span class="booking-form__required">*</span>
+        </label>
+        <input
+          class="booking-form__input"
+          type="text"
+          id="address"
+          formControlName="address"
+        />
+      </div>
+
+      <!-- City -->
+      <div class="booking-form__field">
+        <label class="booking-form__label" for="city">
+          City <span class="booking-form__required">*</span>
+        </label>
+        <input
+          class="booking-form__input booking-form__input--half"
+          type="text"
+          id="city"
+          formControlName="city"
+        />
+      </div>
+
+      <div class="booking-form__field">
+        <label class="booking-form__label" for="zip">
+          Zip/post code <span class="booking-form__optional">(optional)</span>
+        </label>
+        <input
+          class="booking-form__input booking-form__input--sm"
+          type="text"
+          id="zip"
+          formControlName="zip"
+        />
+      </div>
+
+      <div class="booking-form__field">
+        <label class="booking-form__label" for="phone">
+          Phone number <span class="booking-form__required">*</span>
+        </label>
+        <div class="booking-form__phone-row">
+          <select class="booking-form__phone-code" id="phone-code">
+            <option>LK +94</option>
+            <option>US +1</option>
+            <option>GB +44</option>
+            <option>AU +61</option>
+            <option>IN +91</option>
+          </select>
+          <input
+            class="booking-form__input booking-form__input--phone"
+            type="tel"
+            id="phone"
+            formControlName="phone"
+          />
+        </div>
+        <span class="booking-form__hint">
+          To verify your booking, and for the property to connect if needed
+        </span>
+      </div>
+
+      <div class="booking-form__checkboxes">
+        <label class="booking-form__checkbox-label">
+          <input class="booking-form__checkbox" type="checkbox" />
+          <div class="booking-form__checkbox-text">
+            <span class="booking-form__checkbox-title">
+              Yes, I'd like free paperless confirmation (recommended)
+            </span>
+            <span class="booking-form__checkbox-sub">
+              We'll text you a link to download our app
+            </span>
+          </div>
+        </label>
+
+        <label class="booking-form__checkbox-label">
+          <input class="booking-form__checkbox" type="checkbox" />
+          <span class="booking-form__checkbox-title">
+            Update my account to include these new details
+          </span>
+        </label>
+      </div>
+
+      <div class="btn-wrapper">
+        <button class="btn" type="submit">
+          Next: Final details &nbsp;→
+        </button>
+
+    </div>
+
+
+</div>
+
+  </form>
+
+
+</div>
