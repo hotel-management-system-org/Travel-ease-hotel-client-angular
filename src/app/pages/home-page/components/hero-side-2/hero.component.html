@@ -1,0 +1,101 @@
+<section class="hero">
+  <div class="search-bar" (click)="$event.stopPropagation()">
+
+    <div class="search-bar__field"
+         [class.search-bar__field--active]="activeField === 'checkin'"
+         (click)="openCalendar('checkin')">
+      <div class="field-inner">
+   <span class="search-bar__label">Check-In</span>
+        <div class="search-bar__input-row">
+
+           <span class="search-bar__placeholder"
+                 [class.search-bar__placeholder--dark]="checkInDate"
+                 [(ngModel)]="checkInDate" >
+            {{ checkInDate ? (checkInDate | date:'MMM d, y') : 'Add date' }}
+          </span>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="search-bar__divider"></div>
+
+    <div class="search-bar__field"
+         [class.search-bar__field--active]="activeField === 'checkout'"
+         (click)="openCalendar('checkout')">
+      <div class="field-inner">
+        <span class="search-bar__label">Check-Out</span>
+        <div class="search-bar__input-row">
+          <span class="search-bar__placeholder"
+                [class.search-bar__placeholder--dark]="checkOutDate"
+          [(ngModel)]="checkOutDate" >
+            {{ checkOutDate ? (checkOutDate | date:'MMM d, y') : 'Add date' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-bar__divider"></div>
+
+    <div class="search-bar__field search-bar__field--guests">
+      <div class="field-inner">
+        <span class="search-bar__label">Rooms</span>
+        <div class="search-bar__input-row">
+          <input type="number" class="search-bar__guest-input"
+                 min="1" [(ngModel)]="roomCount" placeholder="Add guests">
+        </div>
+      </div>
+    </div>
+
+    <button class="search-bar__btn" type="button">
+      Change search
+    </button>
+
+    <div class="cal-dropdown" *ngIf="calendarOpen" (click)="$event.stopPropagation()">
+      <div class="cal-panel">
+        <div class="cal-header">
+          <button class="cal-nav" (click)="prevMonth()">&#8249;</button>
+          <span class="cal-month-title">{{ getMonthLabel(displayYear1, displayMonth1) }}</span>
+          <button class="cal-nav" (click)="nextMonth()">&#8250;</button>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day-name" *ngFor="let d of dayNames">{{ d }}</div>
+          <div class="cal-day cal-day--empty"
+               *ngFor="let e of getEmptyDays(displayYear1, displayMonth1)"></div>
+          <div class="cal-day"
+               *ngFor="let day of getDays(displayYear1, displayMonth1)"
+               [class.cal-day--disabled]="isPast(day, displayYear1, displayMonth1)"
+               [class.cal-day--start]="isStart(day, displayYear1, displayMonth1)"
+               [class.cal-day--end]="isEnd(day, displayYear1, displayMonth1)"
+               [class.cal-day--in-range]="isInRange(day, displayYear1, displayMonth1)"
+               (click)="selectDay(day, displayYear1, displayMonth1)"
+               (mouseenter)="hoverDay(day, displayYear1, displayMonth1)">
+            {{ day }}
+          </div>
+        </div>
+      </div>
+
+      <div class="cal-panel">
+        <div class="cal-header">
+          <span class="cal-month-title">{{ getMonthLabel(displayYear2, displayMonth2) }}</span>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day-name" *ngFor="let d of dayNames">{{ d }}</div>
+          <div class="cal-day cal-day--empty"
+               *ngFor="let e of getEmptyDays(displayYear2, displayMonth2)"></div>
+          <div class="cal-day"
+               *ngFor="let day of getDays(displayYear2, displayMonth2)"
+               [class.cal-day--disabled]="isPast(day, displayYear2, displayMonth2)"
+               [class.cal-day--start]="isStart(day, displayYear2, displayMonth2)"
+               [class.cal-day--end]="isEnd(day, displayYear2, displayMonth2)"
+               [class.cal-day--in-range]="isInRange(day, displayYear2, displayMonth2)"
+               (click)="selectDay(day, displayYear2, displayMonth2)"
+               (mouseenter)="hoverDay(day, displayYear2, displayMonth2)">
+            {{ day }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
