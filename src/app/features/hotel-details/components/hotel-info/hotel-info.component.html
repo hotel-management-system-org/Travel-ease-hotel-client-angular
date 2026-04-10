@@ -1,0 +1,57 @@
+<section class="hotel-info" style="display: flex;flex-direction: column">
+  <div class="hotel-info__left" style="width: 100%">
+    <div class="hotel-info__title-row">
+      <div>
+        <h1 class="hotel-info__name">{{hotel?.hotelName}}</h1>
+        <p class="hotel-info__address">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          101 Sunshine Ave, Miami, Florida &nbsp;
+          <a class="hotel-info__map-link" href="#">View on Map</a>
+        </p>
+      </div>
+
+      <div class="hotel-info__price-block">
+        <div class="hotel-info__price">
+          <span class="hotel-info__amount">$299</span>
+          <span class="hotel-info__per">/night</span>
+        </div>
+        <button class="hotel-info__book-btn" type="button">Book Now</button>
+      </div>
+    </div>
+
+    <div class="hotel-info__section">
+      <h2 class="hotel-info__section-title">Description</h2>
+      <p class="hotel-info__desc">
+     {{hotel?.description}}
+      </p>
+    </div>
+    <div class="hotel-info__section">
+      <h2 class="hotel-info__section-title">Property Facilities</h2>
+      <div class="facilities-grid">
+
+        <div class="facility-item" *ngFor="let data of hotel?.hotelFacilities;">
+          <div class="facility-item__icon">
+           <mat-icon>{{data.icon}}</mat-icon>
+          </div>
+          <span>{{data.name}}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div style="width: 100%;">
+  <h2 class="hotel-info__section-title">Availability</h2>
+  <p style="margin-bottom: 15px">Prices converted to LKR</p>
+  <app-hero></app-hero>
+<app-apartment-table></app-apartment-table>
+
+  </div>
+
+</section>
