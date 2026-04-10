@@ -1,0 +1,127 @@
+<section class="featured">
+
+  <div class="featured__header">
+    <div class="featured__header-left">
+      <h2 class="featured__title">Featured Destinations</h2>
+      <p class="featured__subtitle">Handpicked retreats for your next adventure</p>
+    </div>
+    <a class="featured__view-all" routerLink="/hotels">
+      View all hotels
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </a>
+  </div>
+
+
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Search hotels..."
+    [value]="searchText"
+    (input)="onSearch($any($event.target).value)"
+  />
+
+  <div *ngIf="isLoading" class="featured__grid">
+    <div *ngFor="let i of [1,2,3,4]" class="hotel-card hotel-card--skeleton">
+      <div class="hotel-card__img-wrap skeleton-block"></div>
+      <div class="hotel-card__body">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading" class="featured__grid">
+    <div
+      *ngFor="let hotel of hotels; trackBy: trackById"
+      class="hotel-card">
+
+      <div class="hotel-card__img-wrap">
+        <img
+          class="hotel-card__img"
+          [src]="getImageUrl(hotel.mainImage)"
+          [alt]="hotel.hotelName"
+          loading="lazy"
+          (load)="imgEl.classList.add('loaded')"
+          (error)="imgEl.src='assets/images/hotel-placeholder.jpg'"
+          #imgEl
+        />
+
+        <span class="hotel-card__badge" *ngIf="hotel.starRating >= 5" >Top Rated</span>
+        <button style="border: 1px solid red"
+          class="hotel-card__fav"
+          [class.hotel-card__fav--active]="isFavorite(hotel.hotelId)"
+          (click)="toggleFavorite(hotel.hotelId)"
+          aria-label="Add to wishlist">
+          <svg width="15" height="15" viewBox="0 0 24 24"
+               [attr.fill]="isFavorite(hotel.hotelId) ? '#E24B4A' : 'none'"
+               [attr.stroke]="isFavorite(hotel.hotelId) ? '#E24B4A' : 'currentColor'"
+               stroke-width="2.5">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="hotel-card__body">
+        <div class="hotel-card__top-row">
+          <h3 class="hotel-card__name">{{ hotel.hotelName }}</h3>
+          <div class="hotel-card__rating">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b" stroke="none">
+              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+            </svg>
+            {{ hotel.starRating }}.0
+          </div>
+        </div>
+
+        <div class="hotel-card__stars">
+          <span
+            *ngFor="let s of getStars(hotel.starRating); let i = index"
+            [class.star--filled]="s === 1"
+            class="star">★</span>
+        </div>
+
+        <div class="hotel-card__footer">
+          <div class="hotel-card__price">
+            <span class="hotel-card__amount">
+              {{ hotel.startingFrom | currency:'USD':'symbol':'1.0-0' }}
+            </span>
+            <span class="hotel-card__per">/night</span>
+          </div>
+          <button class="hotel-card__arrow" aria-label="View details"
+                  [routerLink]="['/hotel-details', hotel.hotelId]">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div *ngIf="!isLoading && hotels.length === 0" class="empty-state">
+    <p style="display: flex;justify-content: center;height: 150px;align-items: center">Hotels Not Found</p>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination" *ngIf="totalPages > 1 && !isLoading">
+    <span class="page-info">
+      {{ (currentPage-1)*pageSize + 1 }}–{{ [currentPage*pageSize, totalCount] }}
+      of {{ totalCount }} hotels
+    </span>
+    <div class="pagination__controls">
+      <button [disabled]="currentPage === 1" (click)="onPageChange(1)">«</button>
+      <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">‹</button>
+      <button
+        *ngFor="let p of getPageRange()"
+        [class.active]="p === currentPage"
+        (click)="onPageChange(p)">{{ p }}</button>
+      <button [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">›</button>
+      <button [disabled]="currentPage === totalPages" (click)="onPageChange(totalPages)">»</button>
+    </div>
+  </div>
+
+</section>
