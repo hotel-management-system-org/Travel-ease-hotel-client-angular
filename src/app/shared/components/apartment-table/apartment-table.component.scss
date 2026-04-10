@@ -1,0 +1,395 @@
+// ============================================================
+// apartment-table.component.scss
+// StayFinder - All Available Apartments Table
+// ============================================================
+
+
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+
+// ---- COLORS specific to this component ----
+$blue-header:   #1a4fa0;
+$green-primary: #1a7f37;
+$green-light:   #d4edda;
+$green-text:    #1e5c2e;
+$red-alert:     #d32f2f;
+
+:host { display: block; }
+
+// ============================================================
+// SECTION WRAPPER
+// ============================================================
+.apt-section {
+  padding: $sp-6 0;
+
+  &__title {
+    font-size: $fs-lg;
+    font-weight: $fw-semibold;
+    color: $gray-900;
+    margin-bottom: $sp-4;
+  }
+
+  // Horizontal scroll on small screens
+  &__table-wrap {
+    overflow-x: auto;
+    border-bottom: 3px solid lightseagreen;
+
+
+  }
+}
+
+// ============================================================
+// TABLE
+// ============================================================
+.apt-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  font-size: $fs-sm;
+
+  // ---- HEADER ROW ----
+  &__head-row {
+    background: $blue-header;
+  }
+
+  &__th {
+    color: $white;
+    font-weight: $fw-semibold;
+    font-size: $fs-xs;
+    padding: 11px 13px;
+    text-align: left;
+    vertical-align: top;
+    border-right: 1px solid rgba($white, 0.15);
+
+    &:last-child { border-right: none; }
+
+    // Column width control
+    &--type    { width: 230px; }
+    &--guests  { width: 110px; }
+    &--price   { width: 155px; }
+    &--choices { width: 235px; }
+    &--select  { width: 90px; }
+    &--action  { width: 145px; }
+  }
+
+  // ---- DATA ROWS ----
+  &__row {
+    transition: background $transition;
+
+    &:hover .apt-table__td {
+      background: rgba($primary, 0.03);
+    }
+  }
+
+  &__td {
+    padding: 12px 13px;
+    border-bottom: 1px solid $gray-200;
+    border-right: 1px solid $gray-100;
+    vertical-align: top;
+    background: $white;
+
+    &:last-child { border-right: none; }
+
+    &--guests {
+      white-space: nowrap;
+    }
+
+    &--select {
+      text-align: left;
+    }
+
+    // Reserve column — no bottom border visible (rowspan)
+    &--reserve {
+      padding: 16px 13px;
+      vertical-align: top;
+      border-right: none;
+    }
+  }
+}
+
+// ============================================================
+// APARTMENT NAME
+// ============================================================
+.apt-name {
+  display: block;
+  color: $blue-header;
+  font-weight: $fw-semibold;
+  font-size: $fs-sm;
+  line-height: 1.5;
+  margin-bottom: $sp-2;
+  cursor: pointer;
+  transition: text-decoration $transition;
+
+  &:hover { text-decoration: underline; }
+}
+
+// ============================================================
+// BADGES
+// ============================================================
+.apt-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  padding: 3px 9px;
+  border-radius: $radius-sm;
+  margin-top: $sp-1;
+
+  &--recommended {
+    background: $green-light;
+    color: $green-text;
+    margin-bottom: $sp-2;
+  }
+
+  &--off {
+    background: $green-primary;
+    color: $white;
+    margin-top: $sp-2;
+  }
+
+  &--genius {
+    background: $blue-header;
+    color: $white;
+    margin-top: $sp-1;
+  }
+}
+
+// ============================================================
+// ALERT (We have 1 left)
+// ============================================================
+.apt-alert {
+  @include flex-center;
+  gap: $sp-2;
+  margin: $sp-1 0 $sp-3;
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: $radius-full;
+    background: $red-alert;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    color: $red-alert;
+    font-weight: $fw-semibold;
+    font-size: $fs-xs;
+  }
+}
+
+// ============================================================
+// BED INFO
+// ============================================================
+.apt-beds {
+  margin: $sp-2 0 $sp-3;
+
+  &__row {
+    font-size: $fs-xs;
+    color: $gray-600;
+    margin: 2px 0;
+
+    strong {
+      color: $gray-900;
+      font-weight: $fw-semibold;
+    }
+  }
+}
+
+// ============================================================
+// AMENITY TAGS
+// ============================================================
+.apt-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-1;
+  margin-top: $sp-2;
+}
+
+.apt-tag {
+  border: 1px solid $gray-200;
+  border-radius: $radius-sm;
+  padding: 3px 7px;
+  font-size: 11px;
+  color: $gray-600;
+  background: $white;
+  white-space: nowrap;
+}
+
+// ============================================================
+// EXTRAS CHECKLIST
+// ============================================================
+.apt-extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: $sp-2;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: $gray-600;
+  }
+
+  &__check {
+    color: $green-primary;
+    font-size: 11px;
+  }
+}
+
+// ============================================================
+// GUESTS
+// ============================================================
+.apt-guests {
+  @include flex-center;
+  gap: $sp-1;
+  font-size: $fs-sm;
+  color: $gray-800;
+
+  &--icons {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+}
+
+// ============================================================
+// PRICE
+// ============================================================
+.apt-price {
+  @include flex-column;
+  gap: 2px;
+
+  &__old {
+    color: $red-alert;
+    text-decoration: line-through;
+    font-size: $fs-xs;
+  }
+
+  &__current {
+    font-size: $fs-lg;
+    font-weight: $fw-semibold;
+    color: $gray-900;
+    @include flex-center;
+    gap: $sp-1;
+    flex-wrap: wrap;
+  }
+
+  &__info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $gray-400;
+    border-radius: $radius-full;
+    font-size: 10px;
+    color: $gray-500;
+    cursor: help;
+    flex-shrink: 0;
+    font-style: normal;
+  }
+
+  &__tax {
+    font-size: 11px;
+    color: $gray-500;
+  }
+}
+
+// ============================================================
+// YOUR CHOICES
+// ============================================================
+.apt-choices {
+  @include flex-column;
+  gap: $sp-2;
+}
+
+.apt-choice {
+  @include flex-center;
+  align-items: flex-start;
+  gap: $sp-2;
+
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+
+    &--green { stroke: $green-primary; }
+    &--neutral { stroke: $gray-500; }
+  }
+
+  &__text {
+    font-size: $fs-xs;
+    color: $gray-600;
+    line-height: 1.5;
+
+    strong { color: $gray-900; font-weight: $fw-semibold; }
+
+    &--green { color: $green-primary; }
+  }
+
+  &__help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $gray-400;
+    border-radius: $radius-full;
+    font-size: 10px;
+    color: $gray-500;
+    cursor: help;
+    margin-left: 3px;
+    vertical-align: middle;
+  }
+}
+
+// ============================================================
+// SELECT DROPDOWN
+// ============================================================
+.apt-select {
+  font-size: $fs-sm;
+  padding: 5px 8px;
+  border: 1px solid $gray-300;
+  border-radius: $radius-sm;
+  background: $white;
+  color: $gray-800;
+  cursor: pointer;
+  min-width: 64px;
+  font-family: $font;
+  transition: border-color $transition;
+
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 1px;
+    border-color: $primary;
+  }
+
+  &:hover { border-color: $gray-400; }
+}
+
+// ============================================================
+// RESERVE BUTTON + NOTES
+// ============================================================
+.apt-reserve-btn {
+  @include btn-primary;
+  width: 100%;
+  padding: $sp-3 $sp-4;
+  font-size: $fs-base;
+  border-radius: $radius-sm;
+  margin-bottom: $sp-3;
+  box-shadow: 0 2px 6px rgba($primary, 0.25);
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba($primary, 0.35);
+    transform: translateY(-1px);
+  }
+
+  &:active { transform: translateY(0); }
+}
+
+.apt-reserve-notes {
+  list-style: disc;
+  padding-left: $sp-4;
+  font-size: $fs-xs;
+  color: $gray-500;
+  line-height: 1.8;
+}
