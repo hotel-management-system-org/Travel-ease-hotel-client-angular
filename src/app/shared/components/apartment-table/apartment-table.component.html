@@ -1,0 +1,110 @@
+
+
+<div class="apt-section">
+
+  <h2 class="apt-section__title">All available apartments</h2>
+
+  <div class="apt-section__table-wrap">
+    <table class="apt-table">
+
+      <!-- ===== THEAD ===== -->
+      <thead>
+        <tr class="apt-table__head-row">
+          <th class="apt-table__th apt-table__th--type">Room type</th>
+          <th class="apt-table__th apt-table__th--guests">Number of guests</th>
+          <th class="apt-table__th apt-table__th--price">Today's price</th>
+          <th class="apt-table__th apt-table__th--choices">Your choices</th>
+          <th class="apt-table__th apt-table__th--select">Select an apartment</th>
+          <th class="apt-table__th apt-table__th--action"></th>
+        </tr>
+      </thead>
+
+      <!-- ===== TBODY ===== -->
+      <tbody >
+
+        <!-- ==================== ROW 1 ==================== -->
+
+        <tr class="apt-table__row" >
+
+          <!-- Apartment Type -->
+          <td class="apt-table__td" style="border-right: 1px solid lightseagreen">
+            <span class="apt-name">Three-Bedroom Apartment with Mountain View</span>
+            <span class="apt-badge apt-badge--recommended">
+      Recommended for 6 adults
+    </span>
+
+            <div class="apt-beds">
+              <p><strong>Bedroom 1:</strong> 1 double bed</p>
+              <p><strong>Bedroom 2:</strong> 1 double bed</p>
+              <p><strong>Bedroom 3:</strong> 1 double bed</p>
+              <p><strong>Bathrooms:</strong> 2</p>
+            </div>
+
+            <div class="apt-tags">
+      <span class="apt-tag" *ngFor="let fac of currentRoom?.facilities">
+        {{ fac.name }}
+      </span>
+            </div>
+          </td>
+
+          <!-- Guests -->
+          <td class="apt-table__td apt-table__td--guests" style="border-right: 1px solid lightseagreen">
+            <div class="apt-guests">
+              × {{ currentRoom?.bedCount }}
+            </div>
+          </td>
+
+          <!-- Price -->
+          <td class="apt-table__td" style="border-right: 1px solid lightseagreen">
+            <div class="apt-price">
+              {{ currentRoom?.price | currency }}
+            </div>
+          </td>
+
+          <!-- Your Choices -->
+          <td class="apt-table__td" style="border-right: 1px solid lightseagreen">
+            <div *ngFor="let p of currentRoom?.policies" style="margin-bottom: 10px">
+              <strong>{{ p.policy}}</strong>: <span style="color:gray">{{ p.description }}</span>
+            </div>
+          </td>
+
+          <!-- Select -->
+          <td class="apt-table__td apt-table__td--select" style="border-right: 1px solid lightseagreen">
+            <select class="apt-select">
+              <option >{{ currentRoom?.price}}</option>
+            </select>
+          </td>
+
+          <!-- Reserve Button (NOT inside loop!) -->
+          <td class="apt-table__td apt-table__td--reserve" >
+            <button class="apt-reserve-btn" (click)="onReserveClick()"
+                    type="button"
+                    [routerLink]="['/booking', currentRoom?.roomId,hotel?.hotelId]">
+              I'll reserve
+            </button>
+            <ul class="apt-reserve-notes">
+              <li>It only takes 2 minutes</li>
+              <li>You won't be charged yet</li>
+            </ul>
+          </td>
+
+        </tr>
+
+
+        <!-- END ROW 3 -->
+
+      </tbody>
+    </table>
+    <div class="pagination" style="display: flex; justify-content: center;align-items: center;margin: 10px;">
+        <button (click)="previousRoom()" [disabled]="currentIndex === 0" style="width: 100px">
+          Previous
+        </button>
+
+        <button (click)="nextRoom()" [disabled]="currentIndex === rooms.length - 1" style="width: 100px;margin-left:10px ">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+
+
