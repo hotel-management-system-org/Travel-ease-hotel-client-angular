@@ -1,0 +1,167 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+:host { display: block; }
+
+// ---- NAVBAR WRAPPER ----
+.navbar {
+  @include flex-between;
+  padding: 0 $sp-10;
+  height: 64px;
+  background: rgba($white, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid $primary-border;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+
+  // ---- LOGO ----
+  &__logo {
+    @include flex-center;
+    gap: $sp-2;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  &__logo-icon {
+    width: 32px;
+    height: 32px;
+    background: $primary;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5px;
+    padding: 6px;
+
+    span {
+      display: block;
+      background: $white;
+      border-radius: 1.5px;
+
+      &:nth-child(1), &:nth-child(2) { width: 8px; height: 5px; }
+      &:nth-child(3), &:nth-child(4) { width: 8px; height: 8px; }
+    }
+  }
+
+  &__logo-name {
+    font-size: $fs-lg;
+    font-weight: $fw-extrabold;
+    color: $gray-900;
+    letter-spacing: -0.3px;
+  }
+
+  // ---- NAV LINKS ----
+  &__links {
+    @include flex-center;
+    gap: $sp-1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: $bp-md) { display: none; }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: $gray-500;
+    padding: $sp-2 $sp-3;
+    border-radius: $radius-md;
+    transition: all $transition;
+
+    &:hover {
+      background: rgba(0,0,0,0.05);
+      color: $gray-900;
+    }
+
+    &--active {
+      color: $primary !important;
+      font-weight: $fw-bold;
+      background: $primary-ghost;
+    }
+  }
+
+  // ---- RIGHT ACTIONS ----
+  &__actions {
+    @include flex-center;
+    gap: $sp-3;
+  }
+
+  &__bell {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: $radius-full;
+    border: 1px solid $gray-200;
+    background: $white;
+    @include flex-center;
+    justify-content: center;
+    cursor: pointer;
+    color: $gray-700;
+    transition: background $transition;
+
+    &:hover { background: $gray-100; }
+  }
+
+  &__bell-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 7px;
+    height: 7px;
+    background: $danger;
+    border-radius: $radius-full;
+    border: 1.5px solid $white;
+  }
+
+  &__avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: $radius-full;
+    background: linear-gradient(135deg, #fdba74, #f97316);
+    border: 2px solid $white;
+    box-shadow: 0 0 0 1px $gray-200;
+    @include flex-center;
+    justify-content: center;
+    font-size: $fs-xs;
+    font-weight: $fw-bold;
+    color: $white;
+    font-family: $font;
+    cursor: pointer;
+    transition: transform $transition;
+
+    &:hover { transform: scale(1.06); }
+  }
+
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $sp-2;
+
+    span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: $gray-700;
+      border-radius: $radius-full;
+      transition: all $transition;
+    }
+
+    &:hover span { background: $primary; }
+
+    @media (max-width: $bp-md) { display: flex; }
+  }
+}
