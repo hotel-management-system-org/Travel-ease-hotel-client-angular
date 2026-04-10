@@ -1,0 +1,38 @@
+<nav class="navbar">
+  <a class="navbar__logo" routerLink="/">
+    <div class="navbar__logo-icon">
+      <div class="navbar__logo-grid">
+        <span></span><span></span>
+        <span></span><span></span>
+      </div>
+    </div>
+    <span class="navbar__logo-name">StayFinder</span>
+  </a>
+  <ul class="navbar__links">
+    <li><a class="navbar__link navbar__link--active" routerLink="/">Home</a></li>
+    <li><a class="navbar__link" routerLink="/hotels">Hotels</a></li>
+    <li><a class="navbar__link" routerLink="/bookings">My Bookings</a></li>
+    <li><a class="navbar__link" routerLink="/wishlist">Wishlist</a></li>
+  </ul>
+  <div class="navbar__actions">
+    <button class="navbar__bell" type="button" aria-label="Notifications">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+      <span class="navbar__bell-badge"></span>
+    </button>
+
+    <button class="navbar__avatar" type="button" aria-label="User profile">
+      JD
+    </button>
+
+    <button class="navbar__hamburger" type="button" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+
+</nav>
