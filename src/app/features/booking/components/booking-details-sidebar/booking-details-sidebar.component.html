@@ -1,0 +1,121 @@
+
+
+<aside class="booking-sidebar">
+  <div class="hotel-card">
+    <img
+      class="hotel-card__img"
+      src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80"
+      alt="The Heritage Inn"
+    />
+
+    <div class="hotel-card__body">
+      <div class="hotel-card__stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      </div>
+
+      <h2 class="hotel-card__name">{{hotel?.hotelName}}</h2>
+
+      <p class="hotel-card__address">
+        No 3, Nelum Mawatha, Primrose Gardens, 20000 Kandy, Sri Lanka
+      </p>
+
+      <a class="hotel-card__location" href="#">
+        Great location — 8.8
+      </a>
+
+      <div class="hotel-card__score-row">
+        <span class="hotel-card__score">8.8</span>
+        <span class="hotel-card__score-label">Fabulous · 60 reviews</span>
+      </div>
+
+      <div class="hotel-card__amenities">
+        <span class="hotel-card__amenity" *ngFor="let data of hotel?.hotelFacilities">
+          <mat-icon style="font-size: 15px;display: flex;justify-content: center;align-items: center">{{data.icon}}</mat-icon>:{{data.name}}
+        </span>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="booking-detail-card">
+    <h3 class="booking-detail-card__title">Your booking details</h3>
+
+    <div class="booking-detail-card__dates">
+      <div class="booking-detail-card__date-col">
+        <span class="booking-detail-card__date-label">Check-in</span>
+        <span class="booking-detail-card__date-value">{{bookingDetails?.checkIn}}</span>
+        <span class="booking-detail-card__date-time">14:00 – 22:30</span>
+      </div>
+      <div class="booking-detail-card__date-divider"></div>
+      <div class="booking-detail-card__date-col">
+        <span class="booking-detail-card__date-label">Check-out</span>
+        <span class="booking-detail-card__date-value">{{bookingDetails?.checkOut}}</span>
+        <span class="booking-detail-card__date-time">06:00 – 10:00</span>
+      </div>
+    </div>
+
+    <div class="booking-detail-card__alert">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <span>Just 1 day away!</span>
+    </div>
+
+    <div class="booking-detail-card__divider"></div>
+
+    <div class="booking-detail-card__selection">
+      <p class="booking-detail-card__selection-label">You selected</p>
+      <p class="booking-detail-card__selection-value">32 nights, {{bookingDetails?.roomCount}} room for 2 adults</p>
+      <p class="booking-detail-card__room-type">1 x Standard Twin Room</p>
+      <a class="booking-detail-card__change-link" href="#">Change your selection</a>
+    </div>
+  </div>
+
+  <div class="price-summary">
+    <h3 class="price-summary__title">Your price summary</h3>
+
+    <div class="price-summary__rows">
+
+      <div class="price-summary__row">
+        <span class="price-summary__label">Original price</span>
+        <span class="price-summary__value">LKR {{room?.price}}</span>
+      </div>
+
+      <div class="price-summary__row price-summary__row--discount">
+        <div class="price-summary__label-col">
+          <span class="price-summary__label">Genius discount</span>
+          <span class="price-summary__sub">You're getting a reduced rate because you're a Genius member.</span>
+        </div>
+        <span class="price-summary__value price-summary__value--red">- LKR 80,351.38</span>
+      </div>
+
+      <div class="price-summary__row price-summary__row--discount">
+        <div class="price-summary__label-col">
+          <span class="price-summary__label">Bonus savings</span>
+          <span class="price-summary__sub">You're getting a reduced rate because this property is offering a discount.</span>
+        </div>
+        <span class="price-summary__value price-summary__value--red">- LKR 58,750.42</span>
+      </div>
+
+    </div>
+
+    <div class="price-summary__total">
+      <div class="price-summary__total-top">
+        <span class="price-summary__total-old">LKR {{room?.price}}</span>
+      </div>
+      <div class="price-summary__total-row">
+        <span class="price-summary__total-label">Total</span>
+        <span class="price-summary__total-value">LKR 528,802.10</span>
+      </div>
+      <p class="price-summary__total-note">Includes taxes and charges</p>
+      <p class="price-summary__total-usd">In property currency: US$1,697.60</p>
+    </div>
+
+  </div>
+
+</aside>
