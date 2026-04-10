@@ -1,0 +1,165 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+:host { display: block; }
+
+.hero {
+  @include flex-column;
+  align-items: center;
+  background-color: var(--background-color);
+  text-align: center;
+  padding: $sp-12 $sp-8 $sp-10;
+  gap: $sp-4;
+
+  // ---- HEADING BLOCK ----
+  &__text {
+    @include flex-column;
+    align-items: center;
+    gap: $sp-3;
+  }
+
+  &__title {
+    font-size: 3.2rem;
+    font-weight: $fw-extrabold;
+    color: $gray-900;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin: 0;
+
+    @media (max-width: $bp-md) {
+      font-size: $fs-4xl;
+      letter-spacing: -0.8px;
+    }
+
+    @media (max-width: $bp-sm) {
+      font-size: $fs-3xl;
+    }
+
+    &--accent { color: $primary; }
+  }
+
+  &__subtitle {
+    font-size: $fs-base;
+    color: $gray-500;
+    max-width: 440px;
+    line-height: 1.7;
+    font-weight: $fw-normal;
+    margin: 0;
+
+    @media (max-width: $bp-sm) { font-size: $fs-sm; }
+  }
+}
+
+// ================================================
+// SEARCH BAR
+// ================================================
+.search-bar {
+  display: flex;
+  align-items: stretch;
+  background: var(--lemon-zest);
+  border-radius: 8px;
+  box-shadow: $shadow-search;
+  position: absolute;
+  top: 168px;
+  z-index: 9;
+  border: none;
+  margin-top: 70px;
+  width: 100%;
+  max-width: 860px;
+  overflow: hidden;
+
+
+  // ---- FIELD ----
+  &__field {
+    @include flex-column;
+    flex: 1;
+    padding: 5px;
+    height: 100%;
+    cursor: pointer;
+    transition: background $transition;
+    min-width: 0;
+
+
+
+    &--guests { flex: 0.8; }
+  }
+
+  // ---- VERTICAL DIVIDER ----
+  &__divider {
+    width: 1px;
+    background: $gray-100;
+    align-self: stretch;
+    margin: $sp-3 0;
+    flex-shrink: 0;
+  }
+
+  // ---- LABEL ----
+  &__label {
+    font-size: 10px;
+    font-weight: $fw-bold;
+    color: $gray-400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $sp-1;
+    white-space: nowrap;
+  }
+
+  // ---- INPUT ROW ----
+  &__input-row {
+    @include flex-center;
+    gap: $sp-2;
+  }
+
+  // ---- ICON ----
+  &__icon {
+    flex-shrink: 0;
+    color: $gray-400;
+
+    &--primary { color: $primary; }
+    &--dark    { color: $gray-700; }
+  }
+
+  // ---- PLACEHOLDER TEXT ----
+  &__placeholder {
+    font-size: $fs-sm;
+    color: $gray-400;
+    font-weight: $fw-medium;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &--dark { color: $gray-700; }
+  }
+
+  // ---- SEARCH BUTTON ----
+  &__btn {
+    @include btn-primary;
+    padding: 0 $sp-8;
+    font-size: $fs-sm;
+    flex-shrink: 0;
+    border-radius: 0;
+    letter-spacing: 0.01em;
+
+    @media (max-width: $bp-md) { padding: 0 $sp-5; }
+  }
+
+  // ---- MOBILE STACKED LAYOUT ----
+  @media (max-width: $bp-md) {
+    flex-direction: column;
+    top: 135px;
+    width: 95%;
+    border-radius: $radius-lg;
+
+    &__field {
+      border-bottom: 1px solid $gray-100;
+      &--guests { border-bottom: none; }
+    }
+
+
+    &__btn {
+      padding: $sp-4;
+      border-radius: 0;
+      font-size: $fs-base;
+    }
+  }
+}
