@@ -1,0 +1,119 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+:host { display: block; }
+
+.newsletter {
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  padding: $sp-12 $sp-8;
+  background: $gray-50;
+  gap: $sp-3;
+
+  @media (max-width: $bp-md) { padding: $sp-10 $sp-4; }
+
+  // ---- TAG ----
+  &__tag {
+    font-size: 10px;
+    font-weight: $fw-bold;
+    color: $primary;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: $primary-light;
+    padding: $sp-1 $sp-3;
+    border-radius: $radius-full;
+  }
+
+  // ---- HEADING ----
+  &__title {
+    font-size: $fs-3xl;
+    font-weight: $fw-extrabold;
+    color: $gray-900;
+    margin: 0;
+    letter-spacing: -0.5px;
+
+    @media (max-width: $bp-sm) { font-size: $fs-2xl; }
+  }
+
+  &__desc {
+    font-size: $fs-base;
+    color: $gray-500;
+    max-width: 460px;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: $fw-normal;
+
+    @media (max-width: $bp-sm) { font-size: $fs-sm; }
+  }
+
+  // ---- FORM ----
+  &__form {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+    width: 100%;
+    max-width: 520px;
+    margin-top: $sp-2;
+
+    @media (max-width: $bp-sm) {
+      flex-direction: column;
+      gap: $sp-3;
+    }
+  }
+
+  &__input-wrap {
+    position: relative;
+    flex: 1;
+    width: 100%;
+  }
+
+  &__input-icon {
+    position: absolute;
+    left: $sp-4;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $gray-400;
+    pointer-events: none;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $sp-4 $sp-4 $sp-4 $sp-10;
+    border: 1.5px solid $gray-200;
+    border-radius: $radius-xl;
+    font-size: $fs-sm;
+    font-family: $font;
+    color: $gray-800;
+    background: $white;
+    outline: none;
+    box-shadow: $shadow-sm;
+    transition: border-color $transition, box-shadow $transition;
+
+    &::placeholder { color: $gray-400; }
+
+    &:hover { border-color: $gray-300; }
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.12);
+    }
+  }
+
+  &__btn {
+    @include btn-primary;
+    padding: $sp-4 $sp-6;
+    font-size: $fs-sm;
+    border-radius: $radius-xl;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba($primary, 0.3);
+
+    &:hover {
+      box-shadow: 0 4px 14px rgba($primary, 0.4);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: $bp-sm) { width: 100%; padding: $sp-4; }
+  }
+}
