@@ -1,0 +1,295 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+$blue-link:    #0071c2;
+$blue-dark:    #003580;
+$blue-light:   #ebf3ff;
+$blue-border:  #0071c2;
+$red-required: #cc0000;
+
+:host { display: block; }
+
+.booking-form-wrap {
+  @include flex-column;
+  gap: $sp-4;
+}
+
+// ============================================================
+// SIGNED IN BANNER
+// ============================================================
+.signed-in-banner {
+  @include flex-center;
+  gap: $sp-3;
+  padding: $sp-4 $sp-5;
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-full;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid $gray-200;
+  }
+
+  &__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__text {
+    @include flex-column;
+    gap: 2px;
+  }
+
+  &__title {
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $gray-900;
+    margin: 0;
+  }
+
+  &__email {
+    font-size: $fs-xs;
+    color: $gray-500;
+    margin: 0;
+  }
+}
+
+// ============================================================
+// FORM CARD
+// ============================================================
+.booking-form {
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  padding: $sp-6;
+  @include flex-column;
+  gap: $sp-5;
+
+  &__title {
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    color: $gray-900;
+    margin: 0;
+  }
+
+  // ---- INFO ALERT ----
+  &__alert {
+    @include flex-center;
+    gap: $sp-3;
+    padding: $sp-3 $sp-4;
+    background: $blue-light;
+    border: 1px solid #bee3f8;
+    border-radius: $radius-md;
+    font-size: $fs-sm;
+    color: $gray-700;
+
+    svg { flex-shrink: 0; }
+
+    strong { color: $gray-900; }
+  }
+
+  // ---- TWO COLUMN ROW ----
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $sp-4;
+
+    @media (max-width: $bp-sm) { grid-template-columns: 1fr; }
+  }
+
+  // ---- FIELD ----
+  &__field {
+    @include flex-column;
+    gap: $sp-2;
+  }
+
+  // ---- LABEL ----
+  &__label {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $gray-800;
+  }
+
+  &__required {
+    color: $red-required;
+    font-weight: $fw-bold;
+  }
+
+  &__optional {
+    color: $gray-400;
+    font-weight: $fw-normal;
+    font-size: $fs-xs;
+  }
+
+  // ---- INPUT ----
+  &__input {
+    width: 100%;
+    padding: $sp-3 $sp-3;
+    border: 1.5px solid $gray-300;
+    border-radius: $radius-sm;
+    font-size: $fs-sm;
+    font-family: $font;
+    color: $gray-900;
+    background: $white;
+    outline: none;
+    transition: border-color $transition, box-shadow $transition;
+
+    &::placeholder { color: $gray-300; }
+
+    &:hover { border-color: $gray-400; }
+
+    &:focus {
+      border-color: $blue-border;
+      box-shadow: 0 0 0 3px rgba($blue-border, 0.12);
+    }
+
+    &--filled { background: $white; }
+    &--half   { max-width: 280px; }
+    &--sm     { max-width: 200px; }
+    &--phone  { flex: 1; }
+  }
+
+  // ---- SELECT ----
+  &__select {
+    padding: $sp-3;
+    border: 1.5px solid $gray-300;
+    border-radius: $radius-sm;
+    font-size: $fs-sm;
+    font-family: $font;
+    color: $gray-900;
+    background: $white;
+    cursor: pointer;
+    outline: none;
+    appearance: auto;
+    transition: border-color $transition;
+
+    &:focus { border-color: $blue-border; }
+  }
+
+  // ---- HINT TEXT ----
+  &__hint {
+    font-size: $fs-xs;
+    color: $gray-500;
+    margin-top: -$sp-1;
+  }
+
+  // ---- PHONE ROW ----
+  &__phone-row {
+    @include flex-center;
+    gap: $sp-2;
+  }
+
+  &__phone-code {
+    padding: $sp-3 $sp-2;
+    border: 1.5px solid $gray-300;
+    border-radius: $radius-sm;
+    font-size: $fs-sm;
+    font-family: $font;
+    color: $gray-900;
+    background: $white;
+    cursor: pointer;
+    outline: none;
+    min-width: 100px;
+    flex-shrink: 0;
+
+    &:focus { border-color: $blue-border; }
+  }
+
+  // ---- CHECKBOXES ----
+  &__checkboxes {
+    @include flex-column;
+    gap: $sp-3;
+    padding-top: $sp-1;
+    border-top: 1px solid $gray-100;
+  }
+
+  &__checkbox-label {
+    @include flex-center;
+    align-items: flex-start;
+    gap: $sp-3;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid $gray-300;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    accent-color: $blue-dark;
+  }
+
+  &__checkbox-text {
+    @include flex-column;
+    gap: 2px;
+  }
+
+  &__checkbox-title {
+    font-size: $fs-sm;
+    color: $gray-800;
+  }
+
+  &__checkbox-sub {
+    font-size: $fs-xs;
+    color: $gray-500;
+  }
+
+  // ---- RADIO GROUP ----
+  &__radio-group {
+    @include flex-column;
+    gap: $sp-2;
+
+    &--row {
+      flex-direction: row;
+      gap: $sp-5;
+    }
+  }
+
+  &__radio-label {
+    @include flex-center;
+    gap: $sp-2;
+    cursor: pointer;
+    font-size: $fs-sm;
+    color: $gray-800;
+  }
+
+  &__radio {
+    width: 18px;
+    height: 18px;
+    accent-color: $blue-dark;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  &__radio-circle {
+    display: none; // native radio used
+  }
+
+}
+.btn-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.btn{
+  background:#1D4ED8;
+  border: none;
+  border-radius: $radius-sm;
+  color: var(--light-color);
+  width: 40%;
+  height: 45px;
+}
+
+@media (max-width: 470px) {
+  .btn{
+    width: 100%;
+  }
+}
