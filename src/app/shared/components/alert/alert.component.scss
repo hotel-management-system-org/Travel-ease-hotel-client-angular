@@ -1,0 +1,118 @@
+// ============================================
+// alert.component.scss
+// Travel Ease - Alert Styles
+// ============================================
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  border: 1px solid transparent;
+  animation: alertFadeIn 0.25s ease;
+
+  // --- ICON ---
+  &__icon {
+    font-size: $font-size-base;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    @include flex-center;
+    border-radius: 50%;
+  }
+
+  // --- MESSAGE ---
+  &__message {
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  // --- CONTENT (for multi-line alerts) ---
+  &__content {
+    @include flex-column;
+    gap: 2px;
+  }
+
+  &__title {
+    font-weight: $font-weight-semibold;
+  }
+
+  &__subtitle {
+    font-size: $font-size-xs;
+    opacity: 0.85;
+  }
+
+  // --- ERROR ---
+  &--error {
+    background: $color-error-light;
+    color: $color-error;
+    border-color: lighten($color-error, 30%);
+
+    .alert__icon {
+      background: rgba($color-error, 0.12);
+    }
+  }
+
+  // --- SUCCESS ---
+  &--success {
+    background: $color-success-light;
+    color: darken($color-success, 5%);
+    border-color: lighten($color-success, 30%);
+
+    .alert__icon {
+      background: rgba($color-success, 0.12);
+    }
+  }
+
+  // --- INFO ---
+  &--info {
+    background: $color-primary-light;
+    color: $color-primary;
+    border-color: lighten($color-primary, 25%);
+
+    .alert__icon {
+      background: rgba($color-primary, 0.12);
+    }
+  }
+
+  // --- WARNING ---
+  &--warning {
+    background: $color-warning-light;
+    color: $color-warning;
+    border-color: lighten($color-warning, 25%);
+
+    .alert__icon {
+      background: rgba($color-warning, 0.12);
+    }
+  }
+
+  // --- BANNER VARIANT (Wider, more prominent) ---
+  &--banner {
+    padding: $spacing-4 $spacing-5;
+    border-radius: $radius-lg;
+    align-items: flex-start;
+
+    .alert__icon {
+      width: 28px;
+      height: 28px;
+      margin-top: 2px;
+    }
+  }
+}
+
+@keyframes alertFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
