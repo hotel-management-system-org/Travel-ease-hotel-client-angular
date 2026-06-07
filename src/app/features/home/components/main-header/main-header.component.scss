@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+// ---- SCSS VARIABLES ----
+$primary:        #2563eb;
+$primary-dark:   #1d4ed8;
+$primary-light:  rgba(37, 99, 235, 0.08);
+$primary-border: rgba(37, 99, 235, 0.1);
+
+$text-dark:      #111827;
+$text-body:      #374151;
+$text-muted:     #6b7280;
+$text-placeholder: #9ca3af;
+
+$white:          #ffffff;
+$gray-50:        #f9fafb;
+$gray-100:       #f3f4f6;
+$gray-200:       #e5e7eb;
+
+$font:           'Plus Jakarta Sans', sans-serif;
+$transition:     0.18s ease;
+
+// ---- MIXINS ----
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ================================================
+// HOST ELEMENT
+// ================================================
+:host {
+  display: block;
+  font-family: $font;
+}
+
+// ================================================
+// HEADER WRAPPER
+// ================================================
+.header {
+  background: linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 40%, #e6f0fb 100%);
+}
+
+// ================================================
+// NAVBAR
+// ================================================
+.navbar {
+  @include flex-center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  background-color: var(--background-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+
+  // --- LOGO ---
+  &__logo {
+    @include flex-center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  &__logo-icon {
+    width: 32px;
+    height: 32px;
+    background: $primary;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5px;
+    padding: 6px;
+
+    span {
+      display: block;
+      background: $white;
+      border-radius: 1.5px;
+
+      &:nth-child(1),
+      &:nth-child(2) { width: 8px; height: 5px; }
+
+      &:nth-child(3),
+      &:nth-child(4) { width: 8px; height: 8px; }
+    }
+  }
+
+  &__logo-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--light-color);
+    letter-spacing: -0.3px;
+  }
+
+  // --- NAV LINKS ---
+  &__links {
+    @include flex-center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #006ce4;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all $transition;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: $text-dark;
+    }
+
+    &--active {
+      color: $primary !important;
+      font-weight: 700;
+      background: $primary-light;
+
+      &:hover {
+        background: $primary-light;
+      }
+    }
+  }
+
+  // --- RIGHT ACTIONS ---
+  &__actions {
+    @include flex-center;
+    width: 25%;
+    border-radius: 20px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__bell {
+    width: 30%;
+    height: 38px;
+    border: 1px solid $gray-200;
+    border-radius: 10px;
+    background: $white;
+    @include flex-center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: background $transition;
+    color: #006ce4;
+    font-weight: 560;
+    font-size: 16px;
+
+  }
+
+  &__bell-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 7px;
+    height: 7px;
+    background: #ef4444;
+    border-radius: 50%;
+    border: 1.5px solid $white;
+  }
+
+  &__avatar {
+    width: 30%;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid $gray-200;
+    background: $white;
+    @include flex-center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: background $transition;
+    color: #006ce4;
+    font-weight: 560;
+    font-size: 16px;
+
+
+  }
+}
+
+// ================================================
+// HERO SECTION
+// ================================================
+.hero {
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 40px 52px;
+  gap: 12px;
+
+  // --- HEADING ---
+  &__title {
+    font-size: 54px;
+    font-weight: 800;
+    color: $text-dark;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin: 0;
+
+    &--accent {
+      color: $primary;
+    }
+  }
+
+  // --- SUBTITLE ---
+  &__subtitle {
+    font-size: 16px;
+    color: $text-muted;
+    max-width: 420px;
+    line-height: 1.7;
+    font-weight: 400;
+    margin: 4px 0 0;
+  }
+}
+
+// ================================================
+// SEARCH BAR
+// ================================================
+.search-bar {
+  display: flex;
+  align-items: stretch;
+  background: $white;
+  border-radius: 16px;
+  box-shadow:
+    0 4px 32px rgba(37, 99, 235, 0.13),
+    0 1px 4px rgba(0, 0, 0, 0.06);
+  margin-top: 20px;
+  width: 100%;
+  max-width: 840px;
+  overflow: hidden;
+  border: 1px solid $primary-border;
+
+  // --- FIELD ---
+  &__field {
+    @include flex-column;
+    padding: 16px 22px;
+    flex: 1;
+    cursor: pointer;
+    transition: background $transition;
+    border-right: 1px solid $gray-100;
+    min-width: 0;
+
+    &:hover {
+      background: $gray-50;
+    }
+
+    &--no-border {
+      border-right: none;
+    }
+  }
+
+  // --- LABEL ---
+  &__label {
+    font-size: 10px;
+    font-weight: 700;
+    color: $text-placeholder;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+    white-space: nowrap;
+  }
+
+  // --- VALUE ROW ---
+  &__value {
+    @include flex-center;
+    gap: 7px;
+    font-size: 14px;
+    color: $text-placeholder;
+    font-weight: 500;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // When field has a real value selected
+    &--filled {
+      color: $text-body;
+    }
+  }
+
+  // --- SVG ICON ---
+  &__icon {
+    flex-shrink: 0;
+    color: $text-placeholder;
+
+    &--blue  { color: $primary; }
+    &--dark  { color: $text-body; }
+  }
+
+  // --- SEARCH BUTTON ---
+  &__btn {
+    @include flex-center;
+    gap: 8px;
+    padding: 0 30px;
+    background: $primary;
+    color: $white;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: $font;
+    border: none;
+    cursor: pointer;
+    transition: background $transition;
+    flex-shrink: 0;
+    letter-spacing: 0.01em;
+
+    &:hover {
+      background: $primary-dark;
+    }
+
+
+  }
+}
+
+// ================================================
+// RESPONSIVE
+// ================================================
+@media (max-width: 1024px) {
+  .hero__title { font-size: 44px; }
+}
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 0 16px;
+
+    &__links {
+      display: none; // Mobile menu is separate
+    }
+  }
+
+  .hero {
+    padding: 40px 16px 36px;
+
+    &__title {
+      font-size: 34px;
+      letter-spacing: -0.8px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+    }
+  }
+
+  .search-bar {
+    flex-direction: column;
+    border-radius: 12px;
+    margin-top: 16px;
+
+    &__field {
+      border-right: none;
+      border-bottom: 1px solid $gray-100;
+
+      &--no-border {
+        border-bottom: none;
+      }
+    }
+
+    &__btn {
+      padding: 16px;
+      width: 60px;
+      justify-content: center;
+      border-radius: 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title { font-size: 28px; }
+
+
+
+  .navbar {
+    display: flex;
+
+  }
+  .btn{
+    flex: 1
+  }
+
+  .navbar__actions{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+
+  }
+}
+
+
+
+@media (max-width: 320px) {
+  .hero__title { font-size: 28px; }
+  .promo-banner{
+    border: 1px solid red;
+  }
+
+}
+
+
+

@@ -1,11 +1,11 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {ResponseHotelDto, ResponseRoomDto} from '../../../../dto/hotel.response';
+import {ResponseHotelDto, ResponseRoomDto} from '../../../home/models/hotel.response';
 import {Subject, takeUntil} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {Hotel} from '../../../../services/hotel/hotel';
+import {HotelService} from '../../../home/services/hotel.service';
 import {NgForOf} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
-import {BookingService, BookingState} from '../../../../services/booking/booking';
+import {BookingService, BookingState} from '../../services/booking.service';
 
 @Component({
   selector: 'app-booking-details-sidebar',
@@ -24,7 +24,7 @@ export class BookingDetailsSidebarComponent implements OnInit, OnDestroy {
   room!: ResponseRoomDto;
   private destroy$ = new Subject<void>();
   route = inject(ActivatedRoute);
-  hotelService = inject(Hotel);
+  hotelService = inject(HotelService);
   bookingService = inject(BookingService);
   hotel: ResponseHotelDto | undefined;
   id: any = null;

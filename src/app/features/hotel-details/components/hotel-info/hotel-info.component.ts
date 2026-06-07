@@ -1,13 +1,13 @@
 import {Component, inject,OnInit} from '@angular/core';
-import {HeroComponentSide2} from '../../../../pages/home-page/components/hero-side-2/hero.component';
+import {HeroComponentSide2} from '../../../home/components/hero-side-2/hero.component';
 import {ApartmentTableComponent} from '../../../../shared/components/apartment-table/apartment-table.component';
 import {ActivatedRoute} from '@angular/router';
-import {Hotel} from '../../../../services/hotel/hotel';
+import {HotelService} from '../../../home/services/hotel.service';
 import {Subject, takeUntil} from 'rxjs';
-import {ResponseHotelDto} from '../../../../dto/hotel.response';
+import {ResponseHotelDto} from '../../../home/models/hotel.response';
 import {NgForOf} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
-import {SearchData} from '../../../../dto/booking.dto';
+import {SearchData} from '../../../booking/models/booking.dto';
 
 @Component({
   selector: 'app-hotel-info',
@@ -24,7 +24,7 @@ export class HotelInfoComponent implements OnInit{
 
 
   route = inject(ActivatedRoute);
-  hotelService = inject(Hotel);
+  hotelService = inject(HotelService);
   private destroy$ = new Subject<void>();
   hotel: ResponseHotelDto | undefined;
   id:any = null;
@@ -43,7 +43,7 @@ export class HotelInfoComponent implements OnInit{
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: data => {
-          console.log("Hotel fac " , data.hotelFacilities);
+          console.log("HotelService fac " , data.hotelFacilities);
           this.hotel = data;
 
         },

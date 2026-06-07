@@ -1,12 +1,12 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {Hotel} from '../../../services/hotel/hotel';
+import {HotelService} from '../../../features/home/services/hotel.service';
 import {first, Subject, take, takeUntil} from 'rxjs';
-import {ResponseHotelDto, ResponseRoomDto} from '../../../dto/hotel.response';
+import {ResponseHotelDto, ResponseRoomDto} from '../../../features/home/models/hotel.response';
 import {CommonModule, CurrencyPipe} from '@angular/common';
-import {Policy} from '../../../services/hotel/policies/policy';
+import {PolicyService} from '../../../features/home/services/policies/policy.service';
 import {FormsModule} from '@angular/forms';
-import {BookingService} from '../../../services/booking/booking';
+import {BookingService} from '../../../features/booking/services/booking.service';
 
 @Component({
   selector: 'app-apartment-table',
@@ -27,9 +27,9 @@ export class ApartmentTableComponent implements OnInit, OnDestroy {
   currentIndex:number = 0;
   private destroy$ = new Subject<void>();
   route = inject(ActivatedRoute);
-  hotelService = inject(Hotel);
+  hotelService = inject(HotelService);
   bookingService = inject(BookingService);
-  policyService = inject(Policy);
+  policyService = inject(PolicyService);
   hotel: ResponseHotelDto | undefined;
   policies: any | undefined;   // FIX: never undefined
   id: any = null;

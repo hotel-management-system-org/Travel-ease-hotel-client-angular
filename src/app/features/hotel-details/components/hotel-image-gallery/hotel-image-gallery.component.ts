@@ -1,8 +1,8 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Hotel} from '../../../../services/hotel/hotel';
+import {HotelService} from '../../../home/services/hotel.service';
 import {Subject, takeUntil} from 'rxjs';
-import {ResponseHotelDto} from '../../../../dto/hotel.response';
+import {ResponseHotelDto} from '../../../home/models/hotel.response';
 
 @Component({
   selector: 'app-hotel-image-gallery',
@@ -17,7 +17,7 @@ export class HotelImageGalleryComponent implements OnInit,OnDestroy {
   }
 
   route = inject(ActivatedRoute);
-  hotelService = inject(Hotel);
+  hotelService = inject(HotelService);
   private destroy$ = new Subject<void>();
   hotel: ResponseHotelDto | undefined;
   id:any = null;

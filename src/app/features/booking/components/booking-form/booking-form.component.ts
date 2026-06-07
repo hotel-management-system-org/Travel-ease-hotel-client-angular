@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {CreateBookingRequestDto} from '../../../../dto/booking.dto';
-import {BookingService} from '../../../../services/booking/booking';
+import {CreateBookingRequestDto} from '../../models/booking.dto';
+import {BookingService} from '../../services/booking.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

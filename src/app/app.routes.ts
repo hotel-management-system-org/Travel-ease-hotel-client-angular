@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import {HomePage} from './pages/home-page/home-page';
-import {SecurityContext} from './features/security/security-context/security-context';
-import {Login} from './features/security/login/login.component';
-import {Register} from './features/security/register/register.component';
-import {ForgotPassword} from './features/security/forgot-password/forgot-password';
-import {ResetPwd} from './features/security/reset-password/reset-pwd.component';
-import {VerifyEmailComponent} from './features/security/verify-email/verify-email.component';
-import {HotelDetailsComponent} from './pages/hotel-details/hotel-details.component';
-import {BookingComponent} from './pages/booking/booking.component';
+import {HomePageComponent} from './features/home/pages/home-page/home-page.component';
+import {SecurityContextComponent} from './features/security/components/security-context/security-context.component';
+import {Login} from './features/security/pages/login/login.component';
+import {Register} from './features/security/pages/register/register.component';
+import {ForgotPasswordComponent} from './features/security/pages/forgot-password/forgot-password.component';
+import {ResetPwd} from './features/security/pages/reset-password/reset-password.component';
+import {VerifyEmailComponent} from './features/security/pages/verify-email/verify-email.component';
+import {HotelDetailsComponent} from './features/hotel-details/pages/hotel-details/hotel-details.component';
+import {BookingComponent} from './features/booking/pages/booking-page/booking.component';
 
 export const routes: Routes = [
   {
@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component:HomePage
+    component:HomePageComponent
   },
   {
     path: 'hotel-details/:id',
@@ -27,12 +27,12 @@ export const routes: Routes = [
     path:'booking/:roomId/:hotelId',
     component:BookingComponent,
   },
-  {path:'security',component:SecurityContext,children:[
+  {path:'security',component:SecurityContextComponent,children:[
       {path:'',redirectTo:'/security/login',pathMatch:"full"},
       {path:'login',component:Login},
       {path:'register',component:Register},
       {path:'register-verification/:email',component:VerifyEmailComponent},
-      {path:'forgot-password',component:ForgotPassword},
+      {path:'forgot-password',component:ForgotPasswordComponent},
       {path: 'reset-pwd', component: ResetPwd}
     ]},
 ];
