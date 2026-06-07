@@ -24,7 +24,6 @@ export class BookingService {
 
 
   setBookingData(data: BookingState) {
-    console.log("Room count " , data.roomCount);
     this.bookingDataSubject.next(data);
   }
 
