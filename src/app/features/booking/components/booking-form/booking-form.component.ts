@@ -3,6 +3,9 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {CreateBookingRequestDto} from '../../models/booking.dto';
 import {BookingService} from '../../services/booking.service';
 import {ActivatedRoute} from '@angular/router';
+import { v4 as uuid4 } from 'uuid';
+import {switchMap, take} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-booking-form',
@@ -17,9 +20,9 @@ export class BookingFormComponent implements OnInit{
 
   bookingService = inject(BookingService);
   route = inject(ActivatedRoute);
-  createBookingRequest:CreateBookingRequestDto | undefined;
   roomId:any = null;
   hotelId:any = null;
+  isSubmitting = false;
 
   form = new FormGroup({
 
@@ -63,14 +66,17 @@ export class BookingFormComponent implements OnInit{
   }
 
   formatDate(date: any): string {
-    console.log("Date:", date);
-
+    if (!date) return '';
     const newDate = new Date(date);
-
     return newDate.toISOString().split('T')[0];
   }
 
   createBooking() {
+    if (this.form.invalid || this.isSubmitting){
+      return;
+    }
+    this.isSubmitting = true;
+    const idempotencyKey = uuid4()
     const firstName = this.form.value.firstName?.trim()!;
     const lastName = this.form.value.lastName?.trim()!;
     const guestEmail = this.form.value.email?.trim()!;
@@ -78,39 +84,44 @@ export class BookingFormComponent implements OnInit{
     const city = this.form.value.city?.trim()!;
     const zipCode = this.form.value.zip?.trim()!;
     const guestPhone = this.form.value.phone?.trim()!;
-    let quantity = null;
     let checkInDate = null;
     let checkOutDate = null;
 
-     this.bookingService.getBookingData().subscribe((e)=>{
-       quantity = e?.roomCount
-       checkInDate = e?.checkIn
-       checkOutDate = e?.checkOut
-     },error => {
-       console.log(error)
-     });
-
-     this.createBookingRequest = {
-       roomId : this.roomId,
-       quantity : quantity!,
-       totalPrice : 10000,
-       firstName : firstName,
-       lastName : lastName,
-       zipCode : zipCode,
-       address : address,
-       city : city,
-       hotelId : this.hotelId,
-       guestEmail : guestEmail,
-       guestPhone : guestPhone,
-       checkIn : this.formatDate(checkInDate!),
-       checkOut : this.formatDate(checkOutDate!),
-     }
-
-     this.bookingService.createBooking(this.createBookingRequest!).subscribe((e)=>{
-       alert("Booking successfully created");
-     }, error => {
-      alert("Room is already booked");
+     this.bookingService.getBookingData().pipe(
+       take(1),
+        switchMap((bookingData) => {
+        const createBookingRequest: CreateBookingRequestDto = {
+              roomId : this.roomId,
+              quantity : bookingData?.roomCount ?? 1,
+              totalPrice : 10000,
+              firstName : firstName,
+              lastName : lastName,
+              zipCode : zipCode,
+              address : address,
+              city : city,
+              hotelId : this.hotelId,
+              guestEmail : guestEmail,
+              guestPhone : guestPhone,
+              checkIn : this.formatDate(checkInDate!),
+              checkOut : this.formatDate(checkOutDate!),
+            };
+        return this.bookingService.createBooking(createBookingRequest, idempotencyKey);
+        })
+       ).subscribe({
+       next: () => {
+         alert("Booking successfully created");
+         this.isSubmitting = false;
+       },
+       error: (error: HttpErrorResponse) => {
+         let errorMessage = 'Booking failed due to a system error. Please try again.';
+         if (error.error && error.error.message){
+           errorMessage = error.error.message;
+         }else if (error.status === 409) {
+           errorMessage = 'Duplicate request detected. Processing your booking already.';
+         }
+         alert(errorMessage);
+         this.isSubmitting = false;
+       }
      })
   }
-
 }
