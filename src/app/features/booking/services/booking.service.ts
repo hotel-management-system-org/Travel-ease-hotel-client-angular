@@ -1,10 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { CreateBookingRequestDto } from '../models/booking.dto';
-import { BehaviorSubject, catchError, Observable, retry, throwError } from 'rxjs';
-import { v4 as uuid } from 'uuid';
-
+import { BehaviorSubject, catchError, Observable,throwError } from 'rxjs';
 
 export interface BookingState {
   checkIn: string;
@@ -31,9 +29,7 @@ export class BookingService {
     return this.bookingDataSubject.asObservable();
   }
 
-  createBooking(request: CreateBookingRequestDto): Observable<any> {
-
-    const idempotencyKey = uuid();
+  createBooking(request: CreateBookingRequestDto,idempotencyKey: string): Observable<any> {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -41,9 +37,8 @@ export class BookingService {
     });
 
     return this.http.post(`${this.baseUrl}/user/create`, request, { headers }).pipe(
-      retry(2),
-      catchError(error => {
-        return throwError(() => new Error('Booking failed. Please try again.'));
+      catchError((error: HttpErrorResponse) => {
+       return throwError(() => error)
       })
     );
   }
