@@ -1,15 +1,10 @@
-// ============================================
-// _variables.scss
-// Travel Ease - Design System Variables
-// ============================================
-
 
 $color-primary:        #2563EB;   // Main blue button color
 $color-primary-dark:   #1D4ED8;   // Hover state blue
 $color-primary-light:  #DBEAFE;   // Light blue background
 $color-primary-ghost:  #EFF6FF;   // Very light blue
 
-// --- SECONDARY COLORS ---
+
 $color-success:        #16A34A;   // Green - success messages
 $color-success-light:  #DCFCE7;   // Light green background
 $color-error:          #DC2626;   // Red - error messages
@@ -17,7 +12,7 @@ $color-error-light:    #FEE2E2;   // Light red background
 $color-warning:        #D97706;   // Orange - warning
 $color-warning-light:  #FEF3C7;   // Light orange
 
-// --- NEUTRAL COLORS (Grays) ---
+
 $color-white:          #FFFFFF;
 $color-gray-50:        #F9FAFB;
 $color-gray-100:       #F3F4F6;
@@ -30,7 +25,7 @@ $color-gray-700:       #374151;
 $color-gray-800:       #1F2937;
 $color-gray-900:       #111827;
 
-// --- BACKGROUND ---
+
 $bg-page:              #F1F5F9;   // Page background (light gray-blue)
 $bg-card:              #FFFFFF;   // Card background
 $bg-input:             #FFFFFF;   // Input background
@@ -75,28 +70,22 @@ $shadow-lg:   0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 
 $shadow-xl:   0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 $shadow-card: 0 2px 20px rgba(37, 99, 235, 0.08);
 
-// --- TRANSITIONS (Animation) ---
+
 $transition-fast:    0.15s ease;
 $transition-base:    0.25s ease;
 $transition-slow:    0.35s ease;
 
-// --- BREAKPOINTS (Screen sizes) ---
+
 $bp-sm:   576px;
 $bp-md:   768px;
 $bp-lg:   992px;
 $bp-xl:   1200px;
 
-// --- BORDER ---
+
 $border-color:       $color-gray-200;
 $border-color-focus: $color-primary;
 $border-radius-input: $radius-md;
 
-// ================================================
-// _variables.scss
-// StayFinder - Global Design Tokens
-// ================================================
-
-// --- COLORS ---
 $primary:           #2563eb;
 $primary-dark:      #1d4ed8;
 $primary-light:     #dbeafe;
@@ -120,8 +109,6 @@ $warning:           #f59e0b;
 $danger:            #ef4444;
 
 $bg-page:           linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 40%, #e6f0fb 100%);
-
-// --- TYPOGRAPHY ---
 $font:              'Plus Jakarta Sans', 'Segoe UI', sans-serif;
 
 $fs-xs:             0.75rem;    // 12px
@@ -140,7 +127,7 @@ $fw-semibold:       600;
 $fw-bold:           700;
 $fw-extrabold:      800;
 
-// --- SPACING ---
+
 $sp-1:   0.25rem;
 $sp-2:   0.5rem;
 $sp-3:   0.75rem;
@@ -152,7 +139,7 @@ $sp-10:  2.5rem;
 $sp-12:  3rem;
 $sp-16:  4rem;
 
-// --- BORDERS ---
+
 $radius-sm:    6px;
 $radius-md:    8px;
 $radius-lg:    12px;
@@ -160,18 +147,17 @@ $radius-xl:    16px;
 $radius-2xl:   20px;
 $radius-full:  9999px;
 
-// --- SHADOWS ---
+
 $shadow-sm:    0 1px 3px rgba(0,0,0,0.08);
 $shadow-md:    0 4px 12px rgba(0,0,0,0.08);
 $shadow-lg:    0 8px 24px rgba(0,0,0,0.10);
 $shadow-card:  0 2px 16px rgba(37,99,235,0.08);
 $shadow-search: 0 4px 32px rgba(37,99,235,0.13), 0 1px 4px rgba(0,0,0,0.06);
 
-// --- TRANSITIONS ---
+
 $transition:   0.18s ease;
 $transition-md: 0.25s ease;
 
-// --- BREAKPOINTS ---
 $bp-sm:   576px;
 $bp-md:   768px;
 $bp-lg:   1024px;
