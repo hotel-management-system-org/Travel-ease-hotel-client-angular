@@ -4,7 +4,7 @@ import {
 } from '../../components/hotel-image-gallery/hotel-image-gallery.component';
 import {HotelInfoComponent} from '../../components/hotel-info/hotel-info.component';
 import {GuestReviewsComponent} from '../../components/guest-reviews/guest-reviews.component';
-import {FooterComponent} from '../../features/home/components/footer/footer.component';
+import {FooterComponent} from '../../../home/components/footer/footer.component';
 
 @Component({
   selector: 'app-hotel-details',
@@ -17,7 +17,4 @@ import {FooterComponent} from '../../features/home/components/footer/footer.comp
   ],
   styleUrls: ['./hotel-details.component.scss']
 })
-export class HotelDetailsComponent{
-
-
-}
+export class HotelDetailsComponent{}
