@@ -7,7 +7,8 @@ import {GlobalFooterComponent} from './shared/components/global-footer/global-fo
   selector: 'app-root',
   imports: [
     MainHeaderComponent,
-    RouterOutlet
+    RouterOutlet,
+    GlobalFooterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
